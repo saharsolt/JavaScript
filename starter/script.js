@@ -65,3 +65,73 @@ lastName = "Soltanmohammadi"; //do not clarify a variable without let, const or 
 console.log(lastName);
 
 //Basic Operators
+// Math operators
+//const ageSahar = 2022 - 1989;
+//const ageNeda = 2022 - 1987;
+const now = 2022;
+const ageSahar = now - 1989;
+const ageNeda = now - 1987;
+console.log(ageSahar, ageNeda);
+console.log(ageNeda * 3, ageSahar / 10, 2 ** 4);
+
+const myFirstName = "Sahar";
+const myLastName = "Soltanmohammadi";
+console.log(myFirstName + " " + myLastName);
+// Assignment operators
+let x = 10 + 5; // 15
+x += 10; // x = x + 10
+x *= 5; // x = x * 5
+x++;
+x--;
+x--;
+console.log(x); //124
+
+//Comparison operators
+console.log(ageNeda > 30);
+console.log(ageSahar >= 33);
+console.log(ageSahar >= 34);
+
+const isFullAge = ageSahar >= 18;
+console.log(isFullAge);
+
+console.log(now - 1989 > now - 1987);
+
+//Operator precedence
+let z, y;
+z = y = 25 - 10 - 5;
+console.log(z, y);
+
+const averageAge = (ageNeda + ageSahar) / 2;
+console.log(ageNeda, ageSahar, averageAge);
+
+//Strings and Template Literals
+const nickName = "Sahar";
+const job1 = "teacher";
+const brthYear = 1989;
+
+const sahar = "I'm " + nickName + ", a " + (now - brthYear) + " year old " + job1 + "!";
+console.log(sahar);
+
+const saharNew = `I'm ${nickName}, a ${now - brthYear} year old ${job1}!`;
+console.log(saharNew);
+
+console.log(`Just a regular string...`);
+
+console.log("String with \n\
+multiple \n\
+lines");
+
+console.log(`string with
+multiple
+lines`);
+
+//If-else
+const ageNarges = 15;
+//const ageLicense = ageNarges >= 18;
+
+if (ageNarges >= 18) {
+  console.log("Narges can start driving license!");
+} else {
+  ageLeft = 18 - ageNarges;
+  console.log(`Narges is too young. Wait another ${ageLeft} years to drive a car :)`);
+}

@@ -21,3 +21,24 @@ console.log(typeof language);
 //language = "Farsi"; Error: Assignment to constant variable.
 
 //LECTURE: Basic Operators
+const firstSplitPopulation = population / 2;
+const secondSplitPopulation = population / 2;
+console.log(firstSplitPopulation, secondSplitPopulation);
+
+console.log(population++); //80000000
+population++;
+console.log(population); //80000002
+
+const finlandPopulation = 6000000;
+console.log(population > finlandPopulation);
+
+const averagePopulation = 33000000;
+console.log(population < averagePopulation);
+
+const description =
+  country + " is in " + continent + ", and is " + population + " people speak " + language + ".";
+console.log(description);
+
+//LECTURE: Strings and Template Literals
+const descriptionNew = `${country} is in ${continent}, and is ${population} people speak ${language}.`;
+console.log(descriptionNew);
