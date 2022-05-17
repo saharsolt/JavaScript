@@ -42,3 +42,36 @@ console.log(description);
 //LECTURE: Strings and Template Literals
 const descriptionNew = `${country} is in ${continent}, and is ${population} people speak ${language}.`;
 console.log(descriptionNew);
+
+//LECTURE: Taking Decisions: if / else Statements
+//population = 13000000;
+//population = 130000000;
+if (population > 33000000) {
+  console.log(`${country}'s population is above average! `);
+} else {
+  console.log(`${country}'s population is ${33000000 - population} below average`);
+}
+
+//LECTURE: Type Conversion and Coercion
+/*1. Predict the result of these 5 operations without executing them:
+'9' - '5';       answer: 4
+'19' - '13' + '17';   answer: '617'
+'19' - '13' + 17;   answer: 23
+'123' < 57;      false
+5 + 6 + '4' + 9 - 4 - 2;    answer: '1143'
+2. Execute the operations to check if you were */
+console.log("9" - "5");
+console.log("19" - "13" + "17");
+console.log("19" - "13" + 17);
+console.log("123" < 57);
+console.log(5 + 6 + "4" + 9 - 4 - 2);
+
+//LECTURE: Equality Operators: == vs. ===
+//let numNeighbours = prompt("How many neighbour countries does your country have");
+//if (numNeighbours == 1) console.log("Only 1 border!"); //loose
+let numNeighbours = Number(prompt("How many neighbour countries does your country have")); // it is necessary because prompt answer is string and strict equality does not support type coersion
+if (numNeighbours === 1) console.log("Strict equality");
+else if (numNeighbours > 1) console.log("More than 1 border");
+else console.log("No borders"); //this is the result when we enter 1 because of strict equality
+
+//LECTURE: Logical Operators

@@ -1,4 +1,4 @@
-//JavaScript Fundamentals – Part 1
+/*//JavaScript Fundamentals – Part 1
 //Linking a JavaScript File
 let js = "amazing";
 if (js === "amazing") alert("JS is FUN!");
@@ -124,7 +124,7 @@ lines");
 console.log(`string with
 multiple
 lines`);
-
+*/
 //If-else
 const ageNarges = 15;
 //const ageLicense = ageNarges >= 18;
@@ -135,3 +135,71 @@ if (ageNarges >= 18) {
   ageLeft = 18 - ageNarges;
   console.log(`Narges is too young. Wait another ${ageLeft} years to drive a car :)`);
 }
+
+const birthYear = 1989;
+let century;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+console.log(century);
+
+//Type Conversion and Coercion
+const inputYear = "1989";
+console.log(Number(inputYear), typeof Number(inputYear));
+console.log(inputYear + 18);
+console.log(Number(inputYear) + 18);
+console.log(String(23), 23, typeof 23);
+console.log(Number("Sahar"), typeof Number("Sahar")); //NaN: Not a valid Number
+
+console.log("I am " + 33 + "years old!");
+console.log("23" - "10" - 3, typeof ("23" - "10" - 3));
+console.log("23" + "10" + 3, typeof ("23" + "10" + 3));
+console.log("23" / "2");
+console.log("23" * 2);
+
+let n = "1" + 1; //11
+n = n - 1;
+console.log(n); //10
+
+//truthy and falsy: 0 '' null undefined NaN
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Sahar"));
+console.log(Boolean({}));
+console.log(Boolean(""));
+
+const money = 0;
+//const money = 100;
+if (money) {
+  console.log("Don't spend all of the money!");
+} else {
+  console.log("You should save much more money.");
+}
+
+let hight;
+//let hight = 123;
+if (hight) {
+  console.log("Yay, Hight is defined!");
+} else {
+  console.log("Hight is undefined.");
+}
+//Equality Operators: == vs. ===
+//const first = 18;
+const first = "18";
+if (first === 18) console.log("You just became adult :D (strict)");
+
+if (first == 18) console.log("you just became an adult :D (loose)");
+
+//const favorite = prompt("What is your favorite numeber?");
+const favorite = Number(prompt("What is your favorite numeber?"));
+console.log(favorite);
+console.log(typeof favorite);
+
+//if (favorite == 43) console.log("Cool, 43 is an amazing number");
+if (favorite === 43) console.log("Cool, 43 is an amazing number!");
+else if (favorite === 7) console.log("Cool, 7 is also an amazing number!");
+else console.log("Number is not 7 or 43");
+
+if (favorite !== 43) console.log("Why not 43?");
