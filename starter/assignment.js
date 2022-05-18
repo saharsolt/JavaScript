@@ -69,9 +69,14 @@ console.log(5 + 6 + "4" + 9 - 4 - 2);
 //LECTURE: Equality Operators: == vs. ===
 //let numNeighbours = prompt("How many neighbour countries does your country have");
 //if (numNeighbours == 1) console.log("Only 1 border!"); //loose
-let numNeighbours = Number(prompt("How many neighbour countries does your country have")); // it is necessary because prompt answer is string and strict equality does not support type coersion
+/*let numNeighbours = Number(prompt("How many neighbour countries does your country have")); // it is necessary because prompt answer is string and strict equality does not support type coersion
 if (numNeighbours === 1) console.log("Strict equality");
 else if (numNeighbours > 1) console.log("More than 1 border");
-else console.log("No borders"); //this is the result when we enter 1 because of strict equality
+else console.log("No borders"); //this is the result when we enter 1 because of strict equality */
 
 //LECTURE: Logical Operators
+if (population < 50000000 && language === "English" && !isIsland) {
+  console.log(`You should live in ${country} :)`);
+} else {
+  console.log(`${country} does not meet your criteria :('`);
+}

@@ -203,3 +203,15 @@ else if (favorite === 7) console.log("Cool, 7 is also an amazing number!");
 else console.log("Number is not 7 or 43");
 
 if (favorite !== 43) console.log("Why not 43?");
+
+//LECTURE: Logical Operators
+const hasDriverLicense = true; //A
+const hasGoodVision = false; //B
+
+console.log(hasDriverLicense && hasGoodVision); //false
+console.log(hasDriverLicense || hasGoodVision); //true
+console.log(!hasDriverLicense); //false
+
+const shouldDrive = hasDriverLicense && hasGoodVision;
+if (shouldDrive) console.log("Sahar is able to drive");
+else console.log("Someone else should drive!");
