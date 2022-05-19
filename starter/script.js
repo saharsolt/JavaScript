@@ -215,3 +215,45 @@ console.log(!hasDriverLicense); //false
 const shouldDrive = hasDriverLicense && hasGoodVision;
 if (shouldDrive) console.log("Sahar is able to drive");
 else console.log("Someone else should drive!");
+
+//The switch Statement
+const day = "monday";
+
+switch (day) {
+  case "monday":
+    console.log("Start studying JavaScript");
+    break;
+  case "Tuesday":
+    console.log("Write some codes");
+    console.log("Check the errors");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Look at some JavaScript tutorial videos");
+    break;
+  case "friday":
+    console.log("Put your code in Github");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy your sunday to start tommorow better");
+    break;
+  default:
+    console.log("Not a valid day");
+}
+//The Conditional (Ternary) Operator
+// const age = 23;
+// age >= 18 ? console.log("Drink wine") : console.log("Drink water");
+const age = 17;
+const drink = age >= 18 ? "wine" : "water";
+console.log(drink);
+
+let drink2;
+if (age >= 18) {
+  drink2 = "wine";
+} else {
+  drink2 = "water";
+}
+console.log(drink2);
+
+console.log(`I'd like to drink ${age >= 18 ? "wine" : "water"}`);
