@@ -92,7 +92,8 @@ for all other simply log 'Great language too :D'*/
 //const Language = "chinese" || "mandarin";
 const Language = "persian";
 switch (Language) {
-  case "chinese" || "mandarin":
+  case "chinese":
+  case "mandarin":
     console.log("MOST number of native speakers!");
     break;
   case "spanish":
