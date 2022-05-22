@@ -256,3 +256,95 @@ console.log(sahar.age);
 //   } driver's license`
 // );
 console.log(sahar.getSummary());
+
+//Iteration: The for Loop
+// console.log("1. you rock it 👏");
+// console.log("2. you rock it 👏");
+// console.log("3. you rock it 👏");
+// console.log("4. you rock it 👏");
+// console.log("5. you rock it 👏");
+// console.log("6. you rock it 👏");
+// console.log("7. you rock it 👏");
+// console.log("8. you rock it 👏");
+// console.log("9. you rock it 👏");
+// console.log("10. you rock it 👏");
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`${rep}. You rock it 👏`);
+}
+//Looping Arrays, Breaking and Continuing
+
+const Neda = [
+  "Neda",
+  "Soltanmohammadi",
+  2022 - 1987,
+  "accountant",
+  ["Masoumeh", "Fatemeh", "Aazita"],
+  true,
+];
+const types = [];
+// console.log(Neda[0]);
+// console.log(Neda[1]);
+// ...
+// console.log(Neda[4]);
+
+for (let i = 0; i < Neda.length; i++) {
+  console.log(Neda[i], typeof Neda[i]);
+  //types[i] = typeof Neda[i];
+  types.push(typeof Neda[i]);
+}
+console.log(types);
+
+const yers = [1989, 2010, 1980, 1999];
+const theirAge = [];
+
+for (let i = 0; i < yers.length; i++) {
+  theirAge.push(2022 - yers[i]);
+}
+console.log(theirAge);
+
+//continue and break
+console.log("--Only Strings--");
+for (let i = 0; i < Neda.length; i++) {
+  if (typeof Neda[i] !== "string") continue;
+  console.log(Neda[i], typeof Neda[i]);
+}
+
+console.log("--Break--");
+for (let i = 0; i < Neda.length; i++) {
+  if (typeof Neda[i] === "number") break;
+  console.log(Neda[i], typeof Neda[i]);
+}
+//Looping Backwards and Loops in Loops
+//0,1,2,3,4
+//4,3,2,1,0
+
+for (let i = Neda.length - 1; i >= 0; i--) {
+  console.log(i, Neda[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`----Starting exercise ${exercise}`);
+
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting ${exercise} weight repetition ${rep}`);
+  }
+}
+
+//The While loop
+
+let rep = 1;
+while (rep <= 10) {
+  console.log(`${rep}. You rock it!`);
+  rep++;
+}
+//rolling dice randomly
+let dice = Math.trunc(Math.random() * 6 + 1);
+
+while (dice !== 6) {
+  console.log(`You rolled dice number ${dice}`);
+  dice = Math.trunc(Math.random() * 6 + 1);
+  if (dice === 6) {
+    console.log("Loop is about to end ...");
+  }
+}
