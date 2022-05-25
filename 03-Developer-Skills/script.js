@@ -14,6 +14,8 @@ console.log(calcAge(1989));
 
 const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 
+const temperatures2 = [3, -9, -6, 'error', 1, 13, 29, 'error', 14];
+
 // 1) Understanding the problem
 //What is temperature amplitude? answer: subtract of highest and lowest temperature
 //What is error? and what should we do with it?
@@ -53,3 +55,77 @@ console.log(calcTempratureAmplitude(temperatures));
 
 // 2) Breaking up into sub-problems
 // Merging 2 arrays
+const tempLen = temperatures2.length;
+for (let i = 0; i < tempLen; i++) {
+  temperatures.push(temperatures2.pop());
+}
+console.log(temperatures);
+const amplitude = calcTempratureAmplitude(temperatures);
+console.log(amplitude);
+
+//or
+
+const calcTempratureAmplitude2 = function (t1, t2) {
+  const temps = t1.concat(t2);
+  //console.log(temps);
+  let max = temps[0];
+  let min = temps[0];
+  for (let i = 0; i < temps.length; i++) {
+    if (temps[i] > max) {
+      max = temps[i];
+    }
+    if (temps[i] < min) {
+      min = temps[i];
+    }
+    //if(typeof temp[i] !== 'number')
+    if (temps[i] === 'error') {
+      continue;
+    }
+  }
+  return max - min;
+};
+
+console.log(calcTempratureAmplitude(temperatures, temperatures2));
+
+//debugging with the console and breakpoints
+
+const measurmentKelvin = function () {
+  const measurement = {
+    type: 'temp',
+    unit: 'celsius',
+    //C: Fix
+    value: Number(prompt('Enter a number as a degree celsius!')),
+  };
+  //console.log(measurement);
+  //B: Find
+  console.table(measurement);
+  const kelvin = measurement.value + 273;
+  return kelvin;
+};
+//A: Identify
+console.log(measurmentKelvin());
+
+//Breakpoint
+const calcTempratureAmplitudeBug = function (t1, t2) {
+  const temps = t1.concat(t2);
+  //console.log(temps);
+  let max = 0; //max:9
+  let min = 0; //min=0
+  for (let i = 0; i < temps.length; i++) {
+    debugger;
+    if (temps[i] > max) {
+      max = temps[i];
+    }
+    debugger;
+    if (temps[i] < min) {
+      min = temps[i];
+    }
+    //if(typeof temp[i] !== 'number')
+    if (temps[i] === 'error') {
+      continue;
+    }
+  }
+  return max - min;
+};
+//Identify
+console.log(calcTempratureAmplitudeBug([1, 9, 4], [3, 7, 2]));
