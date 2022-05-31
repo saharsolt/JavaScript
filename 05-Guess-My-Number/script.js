@@ -18,7 +18,8 @@ document.querySelector('.check').addEventListener('click', function () {
 
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
-  } else if (guess === secretNumber) {
+  } // When guess is true
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🏆 Correct Number!';
 
     document.querySelector('.number').textContent = secretNumber;
@@ -31,18 +32,11 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-  } else if (guess > secretNumber) {
+  } //when guess is wrong
+  else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = '📈too high';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = '💥You lost the game';
-      document.querySelector('.score').textContent = 0;
-    }
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📉too low';
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? '📈Too high' : '📉Too low';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
@@ -51,6 +45,28 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
+//     //when guess is too high
+//   else if (guess > secretNumber) {
+//     if (score > 1) {
+//       document.querySelector('.message').textContent = '📈Too high';
+//       score--;
+//       document.querySelector('.score').textContent = score;
+//     } else {
+//       document.querySelector('.message').textContent = '💥You lost the game';
+//       document.querySelector('.score').textContent = 0;
+//     }
+//     //When guess is too low
+//   } else if (guess < secretNumber) {
+//     if (score > 1) {
+//       document.querySelector('.message').textContent = '📉Too low';
+//       score--;
+//       document.querySelector('.score').textContent = score;
+//     } else {
+//       document.querySelector('.message').textContent = '💥You lost the game';
+//       document.querySelector('.score').textContent = 0;
+//     }
+//   }
+// });
 
 ///////////////////////////////////////
 // Coding Challenge #1
