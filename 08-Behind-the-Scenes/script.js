@@ -36,7 +36,7 @@ function calcAge(birthYear) {
   return age;
 }
 
-const firstName = 'Sahar';
+const firstName1 = 'Sahar';
 calcAge(1989);
 //console.log(age);     ReferenceError
 //printAge();       ReferenceError
@@ -134,4 +134,28 @@ neda.calcAge(); //35
 
 const f = sahar.calcAge;
 
-f(); //undefined; //cannot read the properties of year
+//f(); //undefined; //cannot read the properties of year
+
+var firstName = 'Sahar';
+
+const narges = {
+  firstName: 'Narges',
+  year: 1982,
+  calcAge: function () {
+    console.log(this);
+    console.log(2022 - this.year);
+
+    const isMillenial = function () {
+      console.log(this); //undefined
+      console.log(this.year >= 1980 && this.year <= 1989);
+    };
+    isMillenial();
+  },
+
+  greet: () => {
+    console.log(this); //window: arrow function
+    console.log(`Hey ${this.firstName}`); //undefined because there is no firstName in window object
+    //but when we define var firstName it is different because var own a property in window(Sahar)
+  },
+};
+narges.greet();
