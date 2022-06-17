@@ -104,14 +104,14 @@ const calcAge1 = function (birthYear) {
   console.log(this); //undefined
 };
 
-calcAge1(1989);
+//calcAge1(1989);
 
 const calcAge2 = birthYear => {
   console.log(2022 - birthYear);
   console.log(this); //window   this in arrow function uses its parent feature
 };
 
-calcAge2(1989);
+//calcAge2(1989);
 
 //method
 const sahar = {
@@ -132,7 +132,7 @@ neda.calcAge = sahar.calcAge;
 
 neda.calcAge(); //35
 
-const f = sahar.calcAge;
+//const f = sahar.calcAge;
 
 //f(); //undefined; //cannot read the properties of year
 
@@ -145,17 +145,46 @@ const narges = {
     console.log(this);
     console.log(2022 - this.year);
 
-    const isMillenial = function () {
-      console.log(this); //undefined
-      console.log(this.year >= 1980 && this.year <= 1989);
+    //Solution1
+    // const self = this; //first way to solve the problem with this
+
+    // const isMillenial = function () {
+    //   console.log(self); //object
+    //   console.log(self.year >= 1980 && self.year <= 1989); //true
+
+    //   // console.log(this); //undefined
+    //   // console.log(this.year >= 1980 && this.year <= 1989);//cannot read the property
+    // };
+
+    //Solution2(arrow function)
+    const isMillenial = () => {
+      console.log(this); //object
+      console.log(this.year >= 1980 && this.year <= 1989); //true
     };
     isMillenial();
   },
 
   greet: () => {
     console.log(this); //window: arrow function
-    console.log(`Hey ${this.firstName}`); //undefined because there is no firstName in window object
+    //console.log(`Hey ${this.firstName}`); //undefined because there is no firstName in window object
     //but when we define var firstName it is different because var own a property in window(Sahar)
   },
 };
 narges.greet();
+narges.calcAge();
+
+//arguments keyword
+
+const addex = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addex(3, 7);
+addex(3, 7, 1, 5, 2);
+
+var addarow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+
+addArrow(3, 7); //arguments is not true for arrow function
