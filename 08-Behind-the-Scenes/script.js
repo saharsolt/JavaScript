@@ -75,3 +75,22 @@ var addExp = function (a, b) {
 };
 
 var addArrw = (a, b) => a + b;
+
+//Example
+console.log(numProduct); //undefined
+if (!numProduct) deleteShoppingCard(); //All products are deleted
+var numProduct = 10;
+
+function deleteShoppingCard() {
+  console.log('All products are deleted');
+}
+
+//varibales with var make properity in window object
+
+var x = 3;
+let y = 4;
+const z = 5;
+
+console.log(x === window.x); //true
+console.log(y === window.y); //false
+console.log(z === window.z);
