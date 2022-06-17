@@ -94,3 +94,44 @@ const z = 5;
 console.log(x === window.x); //true
 console.log(y === window.y); //false
 console.log(z === window.z);
+
+//this keyword
+
+console.log(this); //window object
+
+const calcAge1 = function (birthYear) {
+  console.log(2022 - birthYear);
+  console.log(this); //undefined
+};
+
+calcAge1(1989);
+
+const calcAge2 = birthYear => {
+  console.log(2022 - birthYear);
+  console.log(this); //window   this in arrow function uses its parent feature
+};
+
+calcAge2(1989);
+
+//method
+const sahar = {
+  year: 1989,
+  calcAge: function () {
+    console.log(this); //object
+    console.log(2022 - this.year);
+  },
+};
+
+sahar.calcAge();
+
+const neda = {
+  year: 1987,
+};
+//borrow method
+neda.calcAge = sahar.calcAge;
+
+neda.calcAge(); //35
+
+const f = sahar.calcAge;
+
+f(); //undefined; //cannot read the properties of year
