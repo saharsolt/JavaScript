@@ -208,3 +208,42 @@ console.log(friend);
 friend.age = 34;
 console.log(me);
 console.log(friend);
+
+//primitive types
+let lastName = 'Soltanmohammadi';
+let oldLastName = lastName;
+lastName = 'Shokrnezhad';
+
+console.log(oldLastName, lastName);
+
+//refrence types
+const sahar = {
+  firstName: 'Sahar',
+  lastName: 'Soltanmohammadi',
+  age: 33,
+};
+
+const marriedSahar = sahar;
+marriedSahar.lastName = 'Shokrnezhad';
+
+console.log('Before marriage', sahar);
+console.log('After marriage', marriedSahar);
+//marriedSahar = {}; //Assignment to constant variable
+
+//copying object
+const sahar1 = {
+  firstName: 'Sahar',
+  lastName: 'Soltanmohammadi',
+  age: 33,
+  family: ['Sahar', 'Masoud', 'Aahoo'],
+};
+
+//shallow copy
+const copiedSahar = Object.assign({}, sahar1);
+copiedSahar.lastName = 'Shokrnezhad';
+
+copiedSahar.family.push('Aanna');
+copiedSahar.family.push('Aalam');
+
+console.log('Before marriage', sahar1);
+console.log('After marriage', copiedSahar);
