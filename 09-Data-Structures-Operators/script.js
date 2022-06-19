@@ -43,6 +43,11 @@ const restaurant = {
       `Order recieved! ${this.starterMenu[starterMenuIndex]} with ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
 };
 
 restaurant.orderDelivery({
@@ -131,3 +136,54 @@ const {
 //console.log(fri); //{open: 11, close: 23}
 //console.log(open, close); // 11 23
 console.log(o, c2);
+
+//Spread operators
+const arry = [9, 10, 11];
+//const badArray = [1, 2, arry[0], arry[1], arry[2]];
+const badArray = [1, 2, arry];
+console.log(badArray);
+
+const newArray = [1, 2, ...arry];
+console.log(newArray);
+console.log(...newArray);
+console.log(1, 2, 9, 10, 11);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+//Copy Arrays
+const newMenuCopy = [...restaurant.mainMenu];
+
+//Join Arrays
+const newMenuJoin = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(newMenuJoin);
+
+//Iterables: Arrays, Strings, Maps, Sets
+const str = 'Sahar';
+const newName = [...str, '.S'];
+console.log(newName); //['S', 'a', 'h', 'a', 'r', '.S']
+console.log(...str); //S a h a r
+console.log('s', 'a', 'h');
+//console.log(`${...str}`);//Error: We cannot use it
+
+const ingredients = [
+  prompt("Let's make delicious pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
+
+//Objects
+const newRestaurant = {
+  founderIn: 1989,
+  ...restaurant,
+  founder: 'Soltanmohammadi',
+};
+console.log(newRestaurant);
+
+const RestaurantCopy = { ...restaurant };
+newRestaurantCopy.name = 'Restorantie Mala';
+console.log(RestaurantCopy.name);
+console.log(restaurant.name);
