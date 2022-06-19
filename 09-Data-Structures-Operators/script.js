@@ -11,9 +11,6 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterMenuIndex, mainMenuIndex) {
-    return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
-  },
 
   openingHours: {
     thu: {
@@ -29,7 +26,36 @@ const restaurant = {
       close: 24,
     },
   },
+  order: function (starterMenuIndex, mainMenuIndex) {
+    return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
+  },
+  // orderDelivery: function (obj) {
+  //   console.log(obj);
+  // },
+  //destructuring obj
+  orderDelivery: function ({
+    starterMenuIndex = 1,
+    mainMenuIndex = 0,
+    address,
+    time = '10:00',
+  }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterMenuIndex]} with ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: '20:30',
+  address: 'Tapiola',
+  mainMenuIndex: 2,
+  starterMenuIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: 'Tapiola',
+  starterMenuIndex: 2,
+});
 
 //Destructuring Arrays
 const arr = [4, 5, 6];
@@ -74,3 +100,34 @@ console.log(i, j, k); //3 4 7
 
 const [p = 1, q = 1, l = 1] = [9];
 console.log(p, q, l); //9 1 1
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+//default values
+//const { menu, starterMenu: starters = [] } = restaurant; //menu is undefined
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+//mutating variables
+let a1 = 10;
+let b1 = 999;
+const obj = { a1: 22, b1: 79, c1: 100 };
+({ a1, b1 } = obj);
+console.log(a1, b1); //22 79
+
+//nested objects
+// const { fri } = openingHours;
+const {
+  fri: { open: o, close: c2 },
+} = openingHours;
+//console.log(fri); //{open: 11, close: 23}
+//console.log(open, close); // 11 23
+console.log(o, c2);
