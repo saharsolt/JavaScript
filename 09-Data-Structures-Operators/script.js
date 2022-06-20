@@ -48,6 +48,10 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredienta) {
+    console.log(mainIngredient);
+    console.log(otherIngredienta);
+  },
 };
 
 restaurant.orderDelivery({
@@ -184,6 +188,53 @@ const newRestaurant = {
 console.log(newRestaurant);
 
 const RestaurantCopy = { ...restaurant };
-newRestaurantCopy.name = 'Restorantie Mala';
+RestaurantCopy.name = 'Restorantie Mala';
 console.log(RestaurantCopy.name);
 console.log(restaurant.name);
+
+//1) Destructuring
+
+//Spread operators is in the right side of =
+const array1 = [1, 2, ...[3, 4, 5]];
+
+//Rest operator is in the left side of =
+const [ab, bc, ...others] = [1, 2, 3, 4, 5];
+console.log(ab, bc, others);
+//Arrays
+const [pizza, , risotto, ...otherFoods] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFoods);
+
+//Objects
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//2) Functions
+const add = function (...numbers) {
+  console.log(numbers); //[2, 3]
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum = sum + numbers[i];
+    console.log(sum);
+  }
+};
+
+add(2, 3);
+add(4, 1, 6, 9);
+add(1, 3, 5, 7, 9, 11, 13, 17, 19);
+
+const x1 = [2, 4, 6, 8];
+console.log(...x1);
+add(...x1);
+
+restaurant.orderPizza(
+  'mushrooms',
+  'olive',
+  'onion',
+  'spinach',
+  'loaf of bread'
+);
+restaurant.orderPizza('mushrooms');
