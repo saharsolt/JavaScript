@@ -265,3 +265,10 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+//Nullish
+//?? not nullish value. Nullish values are null and undefined.(not 0 and '')
+restaurant.numGuests = 0;
+
+const guests = restaurant.numGuests ?? 40;
+console.log(guests); //0
