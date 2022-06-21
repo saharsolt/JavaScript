@@ -238,3 +238,30 @@ restaurant.orderPizza(
   'loaf of bread'
 );
 restaurant.orderPizza('mushrooms');
+
+//Use any data types, return any data types, short circuiting
+
+console.log('-----OR-----');
+console.log(3 || 'Sahar'); //3
+console.log('' || 'Sahar'); //Sahar
+console.log(true || 'Sahar'); //true
+console.log(undefined || null); //null
+console.log(undefined || 0 || '' || 'Hello' || null || 23);
+
+//restaurant.numGuests = 23;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 40;
+console.log(guest2);
+
+console.log('-----AND-----');
+console.log(0 && 'Sahar');
+console.log(7 && 'Sahar');
+console.log(7 && 23 && null && 'Sahar');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
