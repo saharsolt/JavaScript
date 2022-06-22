@@ -1,5 +1,21 @@
 'use strict';
 
+const weekdays1 = ['Mon', 'Tus', 'Wed', 'Tur', 'Fri', 'Sat', 'Sun'];
+const openingHours1 = {
+  [weekdays1[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  [`day-${2 + 4}`]: {
+    open: 0, // Open 24 hours
+    close: 12 + 12,
+  },
+};
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -12,23 +28,17 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterMenuIndex, mainMenuIndex) {
+  //openingHours:openingHours1,
+
+  //ES6 for enhanced object literals
+  openingHours1,
+
+  order(starterMenuIndex, mainMenuIndex) {
     return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
   },
+  //   order: function (starterMenuIndex, mainMenuIndex) {
+  //     return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
+  //   },
   // orderDelivery: function (obj) {
   //   console.log(obj);
   // },
@@ -136,7 +146,7 @@ console.log(a1, b1); //22 79
 // const { fri } = openingHours;
 const {
   fri: { open: o, close: c2 },
-} = openingHours;
+} = openingHours1;
 //console.log(fri); //{open: 11, close: 23}
 //console.log(open, close); // 11 23
 console.log(o, c2);
