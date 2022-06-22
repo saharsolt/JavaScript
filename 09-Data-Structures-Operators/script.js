@@ -301,3 +301,18 @@ rest1.owner &&= 'Anonymous';
 
 console.log(rest1);
 console.log(rest2);
+
+//Looping Arrays
+const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu1);
+
+for (const item of menu1) {
+  console.log(item);
+}
+
+//for (const item of menu1.entries()) {
+for (const [i, el] of menu1.entries()) {
+  //   console.log(item);
+  //   console.log(`${item[0] + 1}: ${item[1]}`);
+  console.log(`${i + 1}: ${el}`);
+}
