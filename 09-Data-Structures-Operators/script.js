@@ -355,5 +355,32 @@ const users = [{ name: 'Sahar', email: 'gmail.com' }];
 //const users=[];
 console.log(users[0]?.name ?? 'user array is empty!');
 
-if (users.length > 0) console.log(users.name);
+if (users.length > 0) console.log(users[0].name);
 else console.log('user array is emoty!');
+
+//Looping objects
+
+//Property names
+const properties = Object.keys(openingHours);
+console.log(properties); // ['Tur', 'fri', 'day-6']
+// console.log(`We are open on ${properties.length} days!`);
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const dayy of Object.keys(openingHours)) {
+  console.log(dayy);
+  openStr += `${dayy}`;
+}
+console.log(openStr);
+
+//Property values
+const values = Object.values(openingHours);
+console.log(values);
+
+//Entire object
+const entry = Object.entries(openingHours);
+console.log(entry);
+
+//[key, value]
+for (const [key, { open, close }] of entry) {
+  console.log(`On ${key}, we open at ${open} and close at ${close}`);
+}
