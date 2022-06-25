@@ -165,3 +165,9 @@ for (const elPlayer of game.scored.values()) {
   console.log(scorers);
 }
 console.log(scorers);
+
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
