@@ -132,6 +132,7 @@ GOOD LUCK 😀
 */
 
 //1.
+//for (const [i,player] of game.scored.entries())
 for (const player of game.scored.entries()) {
   console.log(`Goal ${player[0] + 1}: ${player[1]}`);
 }
@@ -139,8 +140,16 @@ for (const player of game.scored.entries()) {
 //2.
 let sum = 0;
 let counter = 0;
+//for(const odd of object.values(game.oddds))
 for (const [key, value] of Object.entries(game.odds)) {
   sum += value;
   counter++;
 }
 console.log(sum / counter);
+
+//3.
+//const{team1:game.team1,x:draw, team2:}=game.odds;
+for (const [key, value] of Object.entries(game.odds)) {
+  const str = key === 'x' ? 'draw' : `victory ${game[key]}`;
+  console.log(`Odd of ${str}: ${value}`);
+}
