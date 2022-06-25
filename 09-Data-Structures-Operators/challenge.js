@@ -153,3 +153,15 @@ for (const [key, value] of Object.entries(game.odds)) {
   const str = key === 'x' ? 'draw' : `victory ${game[key]}`;
   console.log(`Odd of ${str}: ${value}`);
 }
+
+//4.
+let scorers = {};
+const entry = Object.values(game.scored);
+for (const elPlayer of game.scored.values()) {
+  let count = 0;
+  for (let i = 0; i < entry.length; i++) if (entry[i] === elPlayer) count++;
+
+  scorers = { [`${elPlayer}`]: count, ...scorers };
+  console.log(scorers);
+}
+console.log(scorers);
