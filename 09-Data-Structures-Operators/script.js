@@ -416,3 +416,39 @@ console.log(staffSet); //['Waiter', 'Chef', 'Manager']
 console.log(new Set(['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter']).size);
 console.log(new Set('Sahar').size);
 console.log(new Set('SaharSoltanmohammamdi').size);
+
+//Map: Data Structure
+
+const rest = new Map();
+console.log(rest); //{}
+rest.set('name', 'Alovera');
+rest.set(1, 'Italiano');
+rest.set(2, 'Pooriano, Iran');
+console.log(rest.set('Name', ['a', 'b', 'c']));
+
+console.log(rest.get('Name'));
+console.log(rest.get(1)); //Italiano
+rest
+  .set('categories', ['Pasta', 'Kebab', 'Hambergur', 'Pizza'])
+  .set('Open', 11)
+  .set('Close', 22)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed :(');
+console.log(rest);
+
+const time = 21;
+console.log(rest.get(time > rest.get('Open') && time < rest.get('Close')));
+
+console.log(rest.size);
+console.log(rest.has('categories'));
+rest.delete(2);
+//rest.clear();
+console.log(rest);
+
+const arr = [1, 2];
+
+console.log(rest.set(arr, 'Iraniano'));
+console.log(rest.get(arr)); //Iraniano
+// console.log(rest.set([1, 2], 'Iraniano'));
+// console.log(rest.get([1, 2]));//undefined
+console.log(rest.set(document.querySelector('h1'), 'Heading'));
