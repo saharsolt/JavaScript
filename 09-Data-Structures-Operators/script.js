@@ -469,3 +469,25 @@ console.log(question);
 //console.log(Object.entries(openingHours1));
 const hours = new Map(Object.entries(openingHours1));
 console.log(hours);
+
+//loop
+
+//Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value} `);
+  }
+}
+// const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+//console.log(question.get('correct') === answer ? question.get(true) : question.get(false));
+console.log(question.get(question.get('correct') === answer));
+
+//Convert Map to Array
+
+console.log([...question]); //= console.log(question.entries());
+console.log([...question.entries()]);
+console.log(question.values());
+console.log([...question.keys()]);
