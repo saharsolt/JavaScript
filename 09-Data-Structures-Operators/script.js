@@ -1,69 +1,69 @@
 'use strict';
 
-// const weekdays1 = ['Mon', 'Tus', 'Wed', 'Tur', 'Fri', 'Sat', 'Sun'];
-// const openingHours1 = {
-//   [weekdays1[3]]: {
-//     open: 12,
-//     close: 22,
-//   },
-//   fri: {
-//     open: 11,
-//     close: 23,
-//   },
-//   [`day-${2 + 4}`]: {
-//     open: 0, // Open 24 hours
-//     close: 12 + 12,
-//   },
-// };
+const weekdays1 = ['Mon', 'Tus', 'Wed', 'Tur', 'Fri', 'Sat', 'Sun'];
+const openingHours1 = {
+  [weekdays1[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  [`day-${2 + 4}`]: {
+    open: 0, // Open 24 hours
+    close: 12 + 12,
+  },
+};
 
-// // Data needed for a later exercise
-// const flights =
-//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-//   //openingHours:openingHours1,
+  //openingHours:openingHours1,
 
-//   //ES6 for enhanced object literals
-//   openingHours1,
-//   openingHours: openingHours1,
+  //ES6 for enhanced object literals
+  openingHours1,
+  openingHours: openingHours1,
 
-//   order(starterMenuIndex, mainMenuIndex) {
-//     return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
-//   },
-//   //   order: function (starterMenuIndex, mainMenuIndex) {
-//   //     return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
-//   //   },
-//   // orderDelivery: function (obj) {
-//   //   console.log(obj);
-//   // },
-//   //destructuring obj
-//   orderDelivery: function ({
-//     starterMenuIndex = 1,
-//     mainMenuIndex = 0,
-//     address,
-//     time = '10:00',
-//   }) {
-//     console.log(
-//       `Order recieved! ${this.starterMenu[starterMenuIndex]} with ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
-//     );
-//   },
-//   orderPasta: function (ing1, ing2, ing3) {
-//     console.log(
-//       `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
-//     );
-//   },
-//   orderPizza: function (mainIngredient, ...otherIngredienta) {
-//     console.log(mainIngredient);
-//     console.log(otherIngredienta);
-//   },
-// };
+  order(starterMenuIndex, mainMenuIndex) {
+    return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
+  },
+  //   order: function (starterMenuIndex, mainMenuIndex) {
+  //     return [this.starterMenu[starterMenuIndex], this.mainMenu[mainMenuIndex]];
+  //   },
+  // orderDelivery: function (obj) {
+  //   console.log(obj);
+  // },
+  //destructuring obj
+  orderDelivery: function ({
+    starterMenuIndex = 1,
+    mainMenuIndex = 0,
+    address,
+    time = '10:00',
+  }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterMenuIndex]} with ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredienta) {
+    console.log(mainIngredient);
+    console.log(otherIngredienta);
+  },
+};
 
 // restaurant.orderDelivery({
 //   time: '20:30',
@@ -452,3 +452,20 @@ console.log(rest.get(arr)); //Iraniano
 // console.log(rest.set([1, 2], 'Iraniano'));
 // console.log(rest.get([1, 2]));//undefined
 console.log(rest.set(document.querySelector('h1'), 'Heading'));
+
+const question = new Map([
+  ['question', 'What is the best programming language?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct Answer'],
+  [false, 'Try again!'],
+]);
+
+console.log(question);
+
+//Convert object to map
+//console.log(Object.entries(openingHours1));
+const hours = new Map(Object.entries(openingHours1));
+console.log(hours);
