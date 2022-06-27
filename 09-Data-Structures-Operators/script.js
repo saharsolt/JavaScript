@@ -508,5 +508,18 @@ console.log(airLine.indexOf('air')); //-1
 
 console.log(airLine.slice(4)); //Air Iran
 console.log(airLine.slice(4, 7)); //Ai
-console.log(airLine.slice(0, indexOf(' '))); //Homa
-console.log(airLine.slice(lastIndexOf(' ') + 1)); //Air
+console.log(airLine.slice(0, airLine.indexOf(' '))); //Homa
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1)); //Iran
+console.log(airLine.slice(-2)); //an
+console.log(airLine.slice(1, -1)); //oma Air Ira
+
+//Example
+const middleSeat = function (seat) {
+  //Seats B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat :(');
+  else console.log('You are lucky🎉');
+};
+middleSeat('12B'); //You got the middle seat :(
+middleSeat('3C'); //You are lucky🎉
+middleSeat('22E');
