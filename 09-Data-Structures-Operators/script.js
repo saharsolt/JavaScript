@@ -523,3 +523,8 @@ const middleSeat = function (seat) {
 middleSeat('12B'); //You got the middle seat :(
 middleSeat('3C'); //You are lucky🎉
 middleSeat('22E');
+//boxing
+console.log(new String('Sahar'));
+console.log(typeof new String('Sahar')); //object
+console.log(new String('Sahar').slice(1)); //ahar
+console.log(typeof new String('Sahar').slice(1)); //string
