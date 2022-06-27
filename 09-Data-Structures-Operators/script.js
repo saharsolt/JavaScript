@@ -507,4 +507,6 @@ console.log(airLine.indexOf('Air')); //5
 console.log(airLine.indexOf('air')); //-1
 
 console.log(airLine.slice(4)); //Air Iran
-console.log(airLine.slice(4, 7)); //Air
+console.log(airLine.slice(4, 7)); //Ai
+console.log(airLine.slice(0, indexOf(' '))); //Homa
+console.log(airLine.slice(lastIndexOf(' ') + 1)); //Air
