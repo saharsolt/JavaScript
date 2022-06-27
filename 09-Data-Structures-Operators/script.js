@@ -491,3 +491,20 @@ console.log([...question]); //= console.log(question.entries());
 console.log([...question.entries()]);
 console.log(question.values());
 console.log([...question.keys()]);
+
+//Strings
+const airLine = 'Homa Air Iran';
+const plane = 'D3342';
+
+console.log(plane[0]); //D
+console.log('AF746'[0]); //A
+console.log(airLine.length); //13
+console.log('A3684'.length); //5
+
+console.log(airLine.indexOf('r')); //7
+console.log(airLine.lastIndexOf('r')); //10
+console.log(airLine.indexOf('Air')); //5
+console.log(airLine.indexOf('air')); //-1
+
+console.log(airLine.slice(4)); //Air Iran
+console.log(airLine.slice(4, 7)); //Air
