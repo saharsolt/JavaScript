@@ -559,3 +559,30 @@ const announcemnet =
   'All passengers come to boarding door 23. Boarding door 23!';
 console.log(announcemnet.replace('door', 'gate'));
 console.log(announcemnet.replaceAll('door', 'gate'));
+console.log(announcemnet.replace(/door/g, 'gate'));
+
+//Booleans
+const plane1 = 'Airbus A320neo';
+console.log(plane1.includes('A320')); //true
+console.log(plane1.includes('Boeing')); //false
+console.log(plane1.startsWith('Air')); //true
+console.log(plane1.startsWith('air')); //false
+console.log(plane1.endsWith('neo')); //true
+
+if (plane1.includes('neo') && plane1.includes('Airbus')) {
+  console.log('Part of the new Airbus family!');
+}
+
+//Practice excersie
+const checkBaggage = function (item) {
+  const baggageLower = item.toLowerCase();
+  if (baggageLower.includes('knife') || baggageLower.includes('gun')) {
+    console.log('You are not allowed on board!');
+  } else {
+    console.log('Welcome aboard');
+  }
+};
+
+checkBaggage('I have some Food, a pocket Knife');
+checkBaggage('laptop and camera');
+checkBaggage('a gun and passport');
