@@ -586,3 +586,20 @@ const checkBaggage = function (item) {
 checkBaggage('I have some Food, a pocket Knife');
 checkBaggage('laptop and camera');
 checkBaggage('a gun and passport');
+
+//Split and Join
+console.log('My+name+is+Sahar'.split('+')); //['My', 'name', 'is', 'Sahar']
+console.log('Sahar Soltanmohammadi'.split(' ')); //['Sahar', 'Soltanmohammadi']
+const [firstName, lastName] = 'Sahar Soltanmohammadi'.split(' ');
+console.log(['Ms.', firstName, lastName].join(' ')); //Mr. Sahar Soltanmohammadi
+
+const capitalization = function (name) {
+  const names = name.split(' ');
+  const nameUpper = [];
+  for (const name2 of names) {
+    nameUpper.push(name2[0].toUpperCase() + name2.slice(1));
+  }
+  console.log(nameUpper.join(' '));
+};
+capitalization('mr. ali soltanmohammadi'); //Mr. Ali Soltanmohammadi
+capitalization('jessica ann smith davis');
