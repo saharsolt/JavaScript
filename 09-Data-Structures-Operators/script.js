@@ -611,3 +611,24 @@ console.log(message.padStart(25, '+'));
 console.log('Sahar'.padStart(25, '+')); //++++++++++++++++++++Sahar
 console.log(message.padEnd(25, '+')); //Got to the gate 23!++++++
 console.log('Sahar'.padEnd(25, '+'));
+
+const maskCreditCard = function (card) {
+  const str = card + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+console.log(maskCreditCard(345566564)); //*****6564
+console.log(maskCreditCard('473767365472687856762')); //*****************6762
+console.log(maskCreditCard(238718536746574386456567915756));
+
+//Repeat
+const message2 = 'Bad weather... All departures delayed!';
+console.log(message2.repeat(5));
+console.log('Sahar'.repeat(12));
+
+const planeInLine = function (number) {
+  console.log(`There are ${number} planes in line ${'✈'.repeat(number)}`);
+};
+planeInLine(5); //There are 5 planes in line ✈✈✈✈✈
+planeInLine(12); //There are 12 planes in line ✈✈✈✈✈✈✈✈✈✈✈✈
+planeInLine(20);
