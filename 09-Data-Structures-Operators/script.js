@@ -598,6 +598,7 @@ const capitalization = function (name) {
   const nameUpper = [];
   for (const name2 of names) {
     nameUpper.push(name2[0].toUpperCase() + name2.slice(1));
+    //nameUpper.push(name2.replace(name2[0], name2[0].toUpperCase()));
   }
   console.log(nameUpper.join(' '));
 };
