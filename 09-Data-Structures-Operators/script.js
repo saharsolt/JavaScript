@@ -604,3 +604,10 @@ const capitalization = function (name) {
 };
 capitalization('mr. ali soltanmohammadi'); //Mr. Ali Soltanmohammadi
 capitalization('jessica ann smith davis');
+
+//Padding
+const message = 'Got to the gate 23!';
+console.log(message.padStart(25, '+'));
+console.log('Sahar'.padStart(25, '+')); //++++++++++++++++++++Sahar
+console.log(message.padEnd(25, '+')); //Got to the gate 23!++++++
+console.log('Sahar'.padEnd(25, '+'));
