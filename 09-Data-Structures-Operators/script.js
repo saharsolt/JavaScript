@@ -528,3 +528,34 @@ console.log(new String('Sahar'));
 console.log(typeof new String('Sahar')); //object
 console.log(new String('Sahar').slice(1)); //ahar
 console.log(typeof new String('Sahar').slice(1)); //string
+
+console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+//Fix capitalization in names
+const name1 = 'sAhAR';
+const nameLower = name1.toLowerCase();
+const nameStandard = nameLower[0].toUpperCase() + nameLower.slice(1);
+console.log(nameStandard); //Sahar
+
+//Comparing emails
+const email = 'sahar.solt@gmail.com';
+const loginEmail = '   SaHar.SolT@Gmail.COM';
+
+//const lowerEmail = loginEmail.toLowerCase();
+//const trimEmail = lowerEmail.trim();
+
+const trimEmail = loginEmail.toLowerCase().trim();
+console.log(trimEmail);
+
+console.log(trimEmail === email);
+
+//Replacing
+const pricePlane = '28,34£';
+const priceDollar = pricePlane.replace('£', '$').replace(',', '.');
+console.log(priceDollar);
+
+const announcemnet =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcemnet.replace('door', 'gate'));
+console.log(announcemnet.replaceAll('door', 'gate'));
