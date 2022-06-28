@@ -203,7 +203,7 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 //1.
-const events = new Set(gameEvents.values());
+const events = [...new Set(gameEvents.values())];
 console.log(events);
 
 //2.
@@ -211,18 +211,17 @@ gameEvents.delete(64);
 console.log(gameEvents);
 
 //3.
-let avg = 0;
-for (const minute of gameEvents.keys()) {
-  console.log(minute);
-  avg += minute;
-}
-avg /= 90;
-console.log(avg);
-
-console.log(`"An event happened, on average, every ${avg} minutes"`);
+console.log(
+  `"An event happened, on average, every ${90 / gameEvents.size} minutes"`
+);
+const time1 = [...gameEvents.keys()].pop();
+console.log(time1); //92
+console.log(
+  `"An event happened, on average, every ${time1 / gameEvents.size} minutes"`
+); //9.2
 
 //4.
-for (const [key, value] of gameEvents.entries()) {
-  const half = key < 45 ? '[FIRST HALF]' : '[SECOND HALF]';
-  console.log(`${half} ${key}: ${value}`);
+for (const [min, event] of gameEvents.entries()) {
+  const half = min < 45 ? '[FIRST HALF]' : '[SECOND HALF]';
+  console.log(`${half} ${min}: ${event}`);
 }
