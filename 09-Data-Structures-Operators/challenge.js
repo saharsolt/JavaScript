@@ -260,12 +260,11 @@ document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
 document.querySelector('button').addEventListener('click', function () {
-  console.log(document.querySelector('textarea').value);
+  //console.log(document.querySelector('textarea').value);
   const name = document.querySelector('textarea').value.split('\n');
-  console.log(name);
+  //console.log(name);
   let nameArray = [];
   for (const variable of name.values()) {
-    // const nameChanged = .indexOf(variable.indexOf('_') + 1);
     const variableLower = variable.toLowerCase();
     const index = variable.indexOf('_') + 1;
     //console.log(index);
@@ -275,17 +274,14 @@ document.querySelector('button').addEventListener('click', function () {
       variableLower.slice(index + 1);
     //console.log(nameChanged);
     const camelcaseName = nameChanged.replace('_', '');
-    console.log(camelcaseName);
+    //console.log(camelcaseName);
     nameArray.push(camelcaseName);
   }
   //console.log(nameArray);
-  //const finalResult = nameArray.join(` ${'✅'.repeat(items.index)} \n`);
-  let i = 0;
   let addedCheckedName = [];
-  for (const item of nameArray.values()) {
-    const newItem = item + ' ' + '✅'.repeat(i + 1);
-    console.log(newItem);
-    i++;
+  for (let i = 0; i < nameArray.length; i++) {
+    const newItem = nameArray[i] + ' ' + '✅'.repeat(i + 1);
+    //console.log(newItem);
     addedCheckedName.push(newItem);
   }
   //console.log(addedCheckedName);
