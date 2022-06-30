@@ -304,7 +304,13 @@ for (let i = 0; i < splittedFlights.length; i++) {
   const fromWhere = [n.toUpperCase().slice(0, 3)];
   const toWhere = [l.toUpperCase().slice(0, 3)];
   const timeTable = [p.replace(':', 'h')];
-  console.log(fromWhere);
-  console.log(toWhere);
-  console.log(timeTable);
+  let strFinal = '';
+  const str = `${m} from ${fromWhere} to ${toWhere} (${timeTable})`.trim();
+  if (str.startsWith('Delayed')) {
+    strFinal = `🔴 ${str}`;
+    //console.log(strFinal);
+  } else {
+    strFinal = `${str}`;
+  }
+  console.log(strFinal.padStart(44, '.'));
 }
