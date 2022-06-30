@@ -295,6 +295,8 @@ const flights =
 //             Arrival from BRU to FAO (11h45)
 //🔴 Delayed Arrival from HEL to FAO (12h05)
 //           Departure from FAO to LIS (12h30)
+
+//How I did the practice
 const dashlessFlights = flights.replaceAll('_', ' ');
 const splittedFlights = dashlessFlights.split('+');
 for (let i = 0; i < splittedFlights.length; i++) {
@@ -312,5 +314,20 @@ for (let i = 0; i < splittedFlights.length; i++) {
   } else {
     strFinal = `${str}`;
   }
-  console.log(strFinal.padStart(44, '.'));
+  console.log(strFinal.padStart(44, ' '));
+}
+
+//How the teacher did
+const getCode = str => str.slice(0, 3).toUpperCase();
+for (const flightt of flights.split('+')) {
+  //console.log(flightt);
+  const [type, from, to, time] = [...flightt.split(';')];
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(44);
+  console.log(output);
 }
