@@ -125,3 +125,30 @@ console.log(eurowings);
 const flightData = [456, 'Neda ghiasi'];
 //book.apply(lufthansa, flightData);
 book.call(lufthansa, ...flightData); //Neda ghiasi booked a seat on Lufthansa flight LH456
+
+//bind method
+
+//book.call(eurowings, 23, 'Sahar Soltanmohammadi');
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+
+bookEW(367, 'Narges Soltani');
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Sahar Soltani');
+bookEW23('Ehsan Shokrnezhad');
+
+//withEventListeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+//lufthansa.buyPlane();
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane); //NaN
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); //301
