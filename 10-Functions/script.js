@@ -91,3 +91,37 @@ greeting('Sahar');
 greeting('Masoud');
 
 greet('Hello')('Sahar');
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  aitaCode: 'LH',
+  booking: [],
+  //book:function(){}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.aitaCode}${flightNum}`
+    );
+    this.booking.push({ flight: `${this.aitaCode}${flightNum}`, name });
+  },
+};
+lufthansa.book('345', 'Sahar Soltanmohammadi');
+lufthansa.book('678', 'Masoud Shokrnezhad');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  aitaCode: 'EW',
+  booking: [],
+};
+
+const book = lufthansa.book;
+//Does not work
+// book(345, 'Sahar Soltanmohammadi'); //Cannot read properties of undefined. Because of this.
+book.call(eurowings, 23, 'Sahar Soltanmohammadi'); //Sahar Soltanmohammadi booked a seat on undefined flight EW23
+book.call(lufthansa, 456, 'Masoud Shokrnezhad');
+console.log(eurowings);
+
+//Apply method
+const flightData = [456, 'Neda ghiasi'];
+//book.apply(lufthansa, flightData);
+book.call(lufthansa, ...flightData); //Neda ghiasi booked a seat on Lufthansa flight LH456
