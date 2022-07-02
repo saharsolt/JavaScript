@@ -43,4 +43,22 @@ const poll = {
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section!
   answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    // const allAnswers = this.options.join('\n');
+    let answer = Number(
+      prompt(`${this.question} \n${this.options.join('\n')}`)
+    );
+    // console.log(typeof answer);
+    if (
+      typeof answer === 'number' &&
+      (answer === 0 || answer === 1 || answer === 2 || answer === 3)
+    )
+      this.answers[answer]++;
+    else {
+      console.log("Answer wouldn't make sense!");
+    }
+  },
 };
+const register = poll.registerNewAnswer;
+register.call(poll);
+console.log(poll);
