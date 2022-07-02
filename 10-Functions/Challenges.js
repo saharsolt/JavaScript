@@ -60,5 +60,6 @@ const poll = {
   },
 };
 const register = poll.registerNewAnswer;
-register.call(poll);
+document.querySelector('.poll').addEventListener('click', register.bind(poll));
+//register.call(poll);
 console.log(poll);
