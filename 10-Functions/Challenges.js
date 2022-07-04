@@ -61,5 +61,10 @@ const poll = {
 };
 const register = poll.registerNewAnswer;
 document.querySelector('.poll').addEventListener('click', register.bind(poll));
+const displayResults = function(type){
+  if(typeof type === Array) console.log(type);
+elseif (typeof type === String) console.log(`Poll results are ${type.join(',')}`);
+}
 //register.call(poll);
 console.log(poll);
+displayResults([2,5,1,0]);
