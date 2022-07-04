@@ -57,14 +57,26 @@ const poll = {
     else {
       console.log("Answer wouldn't make sense!");
     }
+    displayResults(this.answers);
+    displayResults(this.question);
   },
 };
 const register = poll.registerNewAnswer;
 document.querySelector('.poll').addEventListener('click', register.bind(poll));
-const displayResults = function(type){
-  if(typeof type === Array) console.log(type);
-elseif (typeof type === String) console.log(`Poll results are ${type.join(',')}`);
-}
+
+const displayResults = function (type = [1, 3, 4, 1]) {
+  if (typeof type === 'object') {
+    console.log(type);
+  } else {
+    console.log(`Poll results are ${type}`);
+  }
+};
+// if (typeof type === 'String')
+//   console.log(`Poll results are ${type.join(',')}`);
 //register.call(poll);
+const array = [6, 3, 2, 1];
+// console.log(typeof array);
+// displayResults(array);
+// displayResults('Ali');
+// displayResults();
 console.log(poll);
-displayResults([2,5,1,0]);
