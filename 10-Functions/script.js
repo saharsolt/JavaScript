@@ -178,4 +178,14 @@ runOnce();
 //IIFE
 (function () {
   console.log('This will never run again!');
+  const isPrivate = 23;
 })();
+
+// console.log(isPrivate);//isPrivate is not defined
+(() => console.log('This will never Also run again'))();
+{
+  const isPrivate = 47;
+  var isPrime = 100;
+}
+// console.log(isPrivate);
+console.log(isPrime);
