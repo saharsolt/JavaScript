@@ -169,3 +169,13 @@ const addTaxRate = function (rate) {
 };
 const addVAT2 = addTaxRate(0.23);
 addVAT2(100); //123
+
+const runOnce = function () {
+  console.log('This will never run again!');
+};
+runOnce();
+
+//IIFE
+(function () {
+  console.log('This will never run again!');
+})();
