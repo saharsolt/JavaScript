@@ -46,37 +46,30 @@ const poll = {
   registerNewAnswer() {
     // const allAnswers = this.options.join('\n');
     let answer = Number(
-      prompt(`${this.question} \n${this.options.join('\n')}`)
+      prompt(
+        `${this.question} \n${this.options.join('\n')},(Write option number)`
+      )
     );
     // console.log(typeof answer);
-    if (
-      typeof answer === 'number' &&
-      (answer === 0 || answer === 1 || answer === 2 || answer === 3)
-    )
+    if (typeof answer === 'number' && answer < this.options.length) {
       this.answers[answer]++;
-    else {
+      // typeof answer === 'number' && answer < this.options.length && this.answers[answer]++;
+    } else {
       console.log("Answer wouldn't make sense!");
     }
-    displayResults(this.answers);
-    displayResults(this.question);
+    this.displayResults();
+    this.displayResults('string');
+  },
+  displayResults(type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
   },
 };
 const register = poll.registerNewAnswer;
 document.querySelector('.poll').addEventListener('click', register.bind(poll));
 
-const displayResults = function (type = [1, 3, 4, 1]) {
-  if (typeof type === 'object') {
-    console.log(type);
-  } else {
-    console.log(`Poll results are ${type}`);
-  }
-};
-// if (typeof type === 'String')
-//   console.log(`Poll results are ${type.join(',')}`);
-//register.call(poll);
-const array = [6, 3, 2, 1];
-// console.log(typeof array);
-// displayResults(array);
-// displayResults('Ali');
-// displayResults();
-console.log(poll);
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
