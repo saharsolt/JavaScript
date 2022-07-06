@@ -204,3 +204,29 @@ const booker = secureBooikng();
 booker(); //1 passengers
 booker(); //2 passengers
 booker(); //3 passengers
+
+console.dir(booker);
+
+//Example 1
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+g();
+f(); //46
+console.dir(f); //Closure contains variable a
+
+//Re-asigning f function
+h();
+f(); //1554
+console.dir(f); //closure contains variable b, not a
