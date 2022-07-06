@@ -189,3 +189,18 @@ runOnce();
 }
 // console.log(isPrivate);
 console.log(isPrime);
+
+//Closure
+const secureBooikng = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooikng();
+
+booker(); //1 passengers
+booker(); //2 passengers
+booker(); //3 passengers
