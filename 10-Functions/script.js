@@ -230,3 +230,16 @@ console.dir(f); //Closure contains variable a
 h();
 f(); //1554
 console.dir(f); //closure contains variable b, not a
+
+//Example 2
+const boardPassengers = function (n, wait) {
+  let perGroup = n / 3;
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups,each with ${perGroup} passengers`);
+  }, wait * 1000);
+  console.log(`Will start boarding in ${wait} seconds`); //this executed then after the wait the other function executed.
+};
+
+const perGroup = 1000;
+boardPassengers(18, 3);
