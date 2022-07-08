@@ -87,4 +87,7 @@ and what that means for the variables involved in this example.*/
 (function () {
   const header = document.querySelector('h1');
   header.style.color = 'red';
+  document.body.addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
 })();
