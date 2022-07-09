@@ -105,3 +105,14 @@ console.log([...arr, ...arr2]);
 
 //Join method
 console.log(letters.join(' - ')); //a - d - f - g - h - i - j
+
+//at method
+const ar = [23, 46, 72];
+console.log(ar[0]); //23
+console.log(ar.at(0)); //23
+console.log(ar[-1]); //undefined
+
+//Getting last array element
+console.log(ar.at(-1)); //72
+console.log(ar[ar.length - 1]); //72
+console.log(ar.slice(-1)[0]); //72
