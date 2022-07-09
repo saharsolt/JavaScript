@@ -33,7 +33,14 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
+const account5 = {
+  owner: 'Sahar Soltanmohammadi',
+  movements: [200, -200, 340, 700, 50],
+  interestRate: 1.3,
+  pin: 5555,
+};
+
+const accounts = [account1, account2, account3, account4, account5];
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
@@ -152,3 +159,5 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, Set) {
   console.log(`${value}: ${value}`);
 });
+
+//bankist.netlify.app(using account name and pin)
