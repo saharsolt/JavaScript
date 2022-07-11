@@ -22,3 +22,22 @@ Test data:
 § Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 Hints: Use tools from all lectures in this section so far 😉
 GOOD LUCK 😀 */
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const correctedDogsJulia = dogsJulia;
+  correctedDogsJulia.splice(-1);
+  correctedDogsJulia.splice(0, 1);
+  //console.log(correctedDogsJulia);
+  console.log(dogsJulia);
+  const dogs = dogsJulia.concat(dogsKate);
+  console.log(dogs);
+  dogs.forEach(function (dog, i) {
+    const result =
+      dog >= 3
+        ? `Dog number ${i + 1} is an adult, and is ${dog} years old`
+        : `Dog number ${i + 1} is still a puppy 🐶`;
+    console.log(result);
+  });
+};
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
