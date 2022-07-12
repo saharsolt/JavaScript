@@ -93,12 +93,12 @@ displayedMovements(account1.movements);
 /////////////////////////////////////////////////
 //Slice method
 const arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr.slice(2));
-console.log(arr.slice(-2));
-console.log(arr.slice(-2));
-console.log(arr.slice(2, 4));
-console.log(arr.slice(1, -1));
-console.log(arr.slice());
+console.log(arr.slice(2)); //['c', 'd', 'e'];
+console.log(arr.slice(-2)); //['d', 'e']
+console.log(arr.slice(-1)); //['e']
+console.log(arr.slice(2, 4)); //['c', 'd']
+console.log(arr.slice(1, -1)); // ['b', 'c', 'd']
+console.log(arr.slice()); //['a', 'b', 'c', 'd', 'e']
 console.log([...arr]);
 
 //Splice method
@@ -177,3 +177,28 @@ currenciesUnique.forEach(function (value, _, Set) {
 });
 
 //bankist.netlify.app(using account name and pin)
+
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUsd = 1.1;
+const movementUsd = movements.map(function (mov) {
+  return mov * euroToUsd;
+  //return 23;
+});
+//const movementUsd = movements.map(mov => mov * euroToUsd);
+console.log(movements);
+console.log(movementUsd); // [23, 23, 23, 23, 23, 23, 23, 23]
+
+//The same result as map with some differences
+const movementsUsdFor = [];
+for (const mov of movements) {
+  movementsUsdFor.push(mov * euroToUsd);
+}
+console.log(movementsUsdFor);
+
+const movementsDescription = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescription);
