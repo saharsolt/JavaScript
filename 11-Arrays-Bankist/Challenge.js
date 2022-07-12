@@ -24,11 +24,11 @@ Hints: Use tools from all lectures in this section so far 😉
 GOOD LUCK 😀 */
 
 const checkDogs = function (dogsJulia, dogsKate) {
-  const correctedDogsJulia = dogsJulia;
+  const correctedDogsJulia = dogsJulia.slice(); //Shallow copy
   correctedDogsJulia.splice(-1);
   correctedDogsJulia.splice(0, 1);
   //console.log(correctedDogsJulia);
-  console.log(dogsJulia);
+  //console.log(dogsJulia);
   const dogs = dogsJulia.concat(dogsKate);
   console.log(dogs);
   dogs.forEach(function (dog, i) {
