@@ -89,7 +89,15 @@ displayedMovements(account1.movements);
 // LECTURES
 
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
+const createUsername = function (user) {
+  const username = user
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return username;
+};
+console.log(createUsername('Steven Thomas Williams')); //stw
 /////////////////////////////////////////////////
 //Slice method
 const arr = ['a', 'b', 'c', 'd', 'e'];
