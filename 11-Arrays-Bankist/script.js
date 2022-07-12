@@ -34,7 +34,7 @@ const account4 = {
 };
 
 const account5 = {
-  owner: 'Sahar Soltanmohammadi',
+  owner: 'Sahar Soltan Mohammadi',
   movements: [200, -200, 340, 700, 50],
   interestRate: 1.3,
   pin: 5555,
@@ -89,15 +89,26 @@ displayedMovements(account1.movements);
 // LECTURES
 
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const createUsername = function (user) {
-  const username = user
-    .toLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  return username;
+// const createUsername = function (user) {
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return username;
+// };
+// console.log(createUsername('Steven Thomas Williams')); //stw
+const createUsername = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
 };
-console.log(createUsername('Steven Thomas Williams')); //stw
+createUsername(accounts);
+console.log(accounts); //stw
 /////////////////////////////////////////////////
 //Slice method
 const arr = ['a', 'b', 'c', 'd', 'e'];
