@@ -83,6 +83,12 @@ const displayedMovements = function (movements) {
 };
 
 displayedMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 //console.log(containerMovements.innerHTML);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -254,3 +260,10 @@ for (const mov of movements) {
   balance2 += mov;
 }
 console.log(balance2);
+
+//Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max); //3000
