@@ -64,18 +64,17 @@ GOOD LUCK 😀
 */
 
 const calcAverageHumanAge = function (ages) {
-  const humanAge = ages.map(function (age) {
-    if (age <= 2) return 2 * age;
-    else return 16 + age * 4;
+  const humanAge = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAge.filter(function (age) {
+    return age >= 18;
   });
-  //return humanAge;
-  const humanFilter = humanAge.filter(function (age) {
-    return age > 18;
-  });
-  const avg = humanAge.reduce(function (acc, age) {
-    return (acc += age);
-  }, 0);
-  Math.avg(avg);
+  // const avg = adults.reduce(function (acc, age) {
+  //     return (acc += age);
+  //   }, 0) / adults.length;
+  const avg = adults.reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+  // 2,3 => 5/2 = 2.5 or 2/2 + 3/2 = 2.5
+  return avg;
 };
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+const average = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+console.log(average);
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
