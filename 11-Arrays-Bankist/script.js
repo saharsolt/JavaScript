@@ -197,6 +197,7 @@ currenciesUnique.forEach(function (value, _, Set) {
 
 //bankist.netlify.app(using account name and pin)
 
+//map method
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const euroToUsd = 1.1;
 const movementUsd = movements.map(function (mov) {
@@ -221,3 +222,20 @@ const movementsDescription = movements.map(
     )}`
 );
 console.log(movementsDescription);
+
+//filter method
+const deposites = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposites); //[200, 450, 3000, 70, 1300]
+
+const depositesFor = [];
+for (const mov of movements) if (mov > 0) depositesFor.push(mov);
+console.log(depositesFor); //[200, 450, 3000, 70, 1300]
+
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+const withdrawals = movements.filter(mov => mov < 0); //[-400, -650, -130]
+console.log(withdrawals);
