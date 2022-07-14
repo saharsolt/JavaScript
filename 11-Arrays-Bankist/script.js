@@ -303,3 +303,10 @@ const totalDepositeUsd = movements
   })
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositeUsd);
+
+//find method
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal); //-400
+
+const account = accounts.find(acc => acc.owner === 'Sahar Soltan Mohammadi');
+console.log(account); //{owner: 'Sahar Soltan Mohammadi', movements: Array(5), interestRate: 1.3, pin: 5555, username: 'ssm'}
