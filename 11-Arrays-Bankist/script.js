@@ -86,7 +86,7 @@ displayedMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
 };
 calcDisplayBalance(account1.movements);
 //console.log(containerMovements.innerHTML);
@@ -223,7 +223,7 @@ console.log(movementsUsdFor);
 
 const movementsDescription = movements.map(
   (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdraw'} ${Math.abs(
       mov
     )}`
 );
@@ -267,3 +267,18 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(max); //3000
+
+//PIPELINE
+// const totalDepositeUsd = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * euroToUsd)
+//   .reduce((acc, mov) => acc + mov, 0);
+
+const totalDepositeUsd = movements
+  .filter(mov => mov < 0)
+  .map((mov, i, arr) => {
+    console.log(arr); //[-400, -650, -130]
+    return mov * euroToUsd;
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositeUsd);
