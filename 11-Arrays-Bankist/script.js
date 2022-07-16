@@ -68,10 +68,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayedMovements = function (movements) {
+const displayedMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ''; //It deletes the previous rows
   //.textContent = 0;
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
   <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -234,6 +236,14 @@ btnLoan.addEventListener('click', function (e) {
   //Update UI
   updateUI(currentAccount);
   inputLoanAmount.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  // displayedMovements(currentAccount.movements, true);
+  displayedMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 /////////////////////////////////////////////////
 //Slice method
@@ -462,10 +472,20 @@ console.log(owner); //['Ali', 'Jonas', 'Sahar']
 //Numbers
 console.log(movements); //[200, 450, -400, 3000, -650, -130, 70, 1300]
 
+//Ascending
 //return <0 , A,B (Keep order)
 //return >0 , B,A (switch order)
-movements.sort((a, b) => {
-  if (a > b) return 1;
-  if (a < b) return -1;
-});
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b); // if a>b => the result is positive, if a<b => the result is negative, and if a=b => the result is zero and the order does not change
 console.log(movements); //[-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+//Desending
+// movements.sort((a, b) => {
+//   if (a < b) return 1;
+//   if (a > b) return -1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements); //[3000, 1300, 450, 200, 70, -130, -400, -650]
