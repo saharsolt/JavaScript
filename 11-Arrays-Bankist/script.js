@@ -224,6 +224,17 @@ btnClose.addEventListener('click', function (e) {
     inputClosePin.value = inputCloseUsername.value = '';
   }
 });
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+  }
+  //Update UI
+  updateUI(currentAccount);
+  inputLoanAmount.value = '';
+});
 /////////////////////////////////////////////////
 //Slice method
 const arr = ['a', 'b', 'c', 'd', 'e'];
@@ -398,3 +409,11 @@ console.log(firstWithdrawal); //-400
 
 const account = accounts.find(acc => acc.owner === 'Sahar Soltan Mohammadi');
 console.log(account); //{owner: 'Sahar Soltan Mohammadi', movements: Array(5), interestRate: 1.3, pin: 5555, username: 'ssm'}
+
+//some method
+//Equality
+console.log(movements.includes(-130)); //true
+//Condition
+console.log(movements.some(mov => mov === -130));
+const anyDeposite = movements.some(mov => mov > 0);
+console.log(anyDeposite); //true
