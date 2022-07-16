@@ -203,6 +203,27 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAccount);
   }
 });
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  //console.log('Delete');
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index); //2 for username:stw
+    //.indexOf(23);
+    //Delete account
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+    inputClosePin.value = inputCloseUsername.value = '';
+  }
+});
 /////////////////////////////////////////////////
 //Slice method
 const arr = ['a', 'b', 'c', 'd', 'e'];
