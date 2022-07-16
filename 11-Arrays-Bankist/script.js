@@ -453,3 +453,19 @@ const overalBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overalBalance2); //18930
+
+//sort method
+const owner = ['Sahar', 'Jonas', 'Ali'];
+console.log(owner.sort()); //['Ali', 'Jonas', 'Sahar']
+console.log(owner); //['Ali', 'Jonas', 'Sahar']
+
+//Numbers
+console.log(movements); //[200, 450, -400, 3000, -650, -130, 70, 1300]
+
+//return <0 , A,B (Keep order)
+//return >0 , B,A (switch order)
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(movements); //[-650, -400, -130, 70, 200, 450, 1300, 3000]
