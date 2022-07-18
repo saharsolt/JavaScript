@@ -507,3 +507,24 @@ x.fill(3, 3, 5);
 console.log(x); //[1, 1, 1, 3, 3, 2, 2]
 a.fill(23, 2, 6);
 console.log(a); //[1, 2, 23, 23, 23, 23, 7]
+
+//Array.form
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); //[1, 1, 1, 1, 1, 1, 1]
+//const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z); //[1, 2, 3, 4, 5, 6, 7]
+
+labelBalance.addEventListener('click', function () {
+  // const movementsUI = Array.from(
+  //   document.querySelectorAll('.movements__value')
+  // );
+  // console.log(movementsUI.map(el => el.textContent.replace('€', ''))); //['1300', '70', '-130', '-650', '3000', '-400', '450', '200']
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI); //[1300, 70, -130, -650, 3000, -400, 450, 200]
+
+  const moventsUI2 = [...document.querySelectorAll('.movements__value')];
+});
