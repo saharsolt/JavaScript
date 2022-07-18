@@ -489,3 +489,21 @@ console.log(movements); //[-650, -400, -130, 70, 200, 450, 1300, 3000]
 // });
 movements.sort((a, b) => b - a);
 console.log(movements); //[3000, 1300, 450, 200, 70, -130, -400, -650]
+
+//More ways of creating and filling arrays
+const a = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+//Empty arrrays and fill method
+const x = new Array(7);
+console.log(x); //[empty × 7]
+//x.map(() => 5);
+console.log(x);
+x.fill(1);
+console.log(x); //[1, 1, 1, 1, 1, 1, 1]
+x.fill(2, 3);
+console.log(x); //[1, 1, 1, 2, 2, 2, 2]
+x.fill(3, 3, 5);
+console.log(x); //[1, 1, 1, 3, 3, 2, 2]
+a.fill(23, 2, 6);
+console.log(a); //[1, 2, 23, 23, 23, 23, 7]
