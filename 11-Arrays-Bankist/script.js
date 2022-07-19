@@ -528,3 +528,18 @@ labelBalance.addEventListener('click', function () {
 
   const moventsUI2 = [...document.querySelectorAll('.movements__value')];
 });
+
+//Array method practice
+//1.How much has been deposited in total in bank?
+const allDeposits = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .filter(mov => mov > 0)
+  .reduce((acc, cur) => acc + cur, 0);
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((acc, cur) => acc + cur, 0);
+console.log(allDeposits);
+console.log(bankDepositSum);
