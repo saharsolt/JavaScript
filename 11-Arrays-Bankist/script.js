@@ -554,5 +554,11 @@ const numDeposits1000 = accounts
   .flatMap(acc => acc.movements)
   .filter(mov => mov >= 1000)
   .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
-
+//.reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
 console.log(numDeposits1000); //6
+
+//Prefix and postfix operator
+let ab = 10;
+console.log(ab++); //10
+console.log(ab); //11
+console.log(++ab); //12
