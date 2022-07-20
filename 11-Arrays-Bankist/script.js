@@ -585,3 +585,19 @@ const { deposits, withdrawal } = accounts
   );
 
 console.log(deposits, withdrawal); //26470 -7540
+//4. Creat simple function to convert any string to a titlecase
+//titlecase: this is a nice title. => This Is a Nice Title.
+const titlecase = function (str) {
+  const exceptions = ['a', 'an', 'the', 'in', 'on', 'with', 'but', 'or', 'and'];
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const convert = str
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  return capitalize(convert);
+};
+
+console.log(titlecase('this is a nice title.'));
+console.log(titlecase('This is a long TITLE but not too LONG!'));
+console.log(titlecase('And here is another title with an example'));
