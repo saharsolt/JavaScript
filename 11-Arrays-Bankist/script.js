@@ -562,3 +562,26 @@ let ab = 10;
 console.log(ab++); //10
 console.log(ab); //11
 console.log(++ab); //12
+
+//3. Create a new object instead of string value
+// const sums = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+//How to destructure previous code
+const { deposits, withdrawal } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      sums[cur > 0 ? 'deposits' : 'withdrawal'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawal: 0 }
+  );
+
+console.log(deposits, withdrawal); //26470 -7540
