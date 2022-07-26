@@ -198,3 +198,26 @@ console.log(ownersEatTooLittle);
 //4.
 console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much`);
 console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little`);
+
+//5.
+console.log(dogs.includes(dog => dog.curFood === dog.recommendedFood));
+
+//6.
+console.log(
+  dogs.includes(
+    dog =>
+      dog.curFood > dog.recommended * 0.9 && dog.curFood < dog.recommended * 1.1
+  )
+);
+
+//7.
+console.log(
+  dogs.filter(
+    dog =>
+      dog.curFood > dog.recommended * 0.9 && dog.curFood < dog.recommended * 1.1
+  )
+);
+
+//8.
+const dogShallow = [...dogs];
+console.log(dogShallow);
