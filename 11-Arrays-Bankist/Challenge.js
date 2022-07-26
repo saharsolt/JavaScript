@@ -151,29 +151,50 @@ const dogs = [
   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
-
+//1.
 dogs.forEach(function (obj) {
-  obj.recommendedFood = obj.weight ** 0.75 * 28;
-  console.log(obj.recommendedFood);
-  obj.owners.forEach(function (own) {
-    //console.log(own);
-    if (own === 'Sarah') {
-      console.log(
-        `It's eating ${
-          obj.recommendedFood > obj.curFood ? 'too little' : 'too much'
-        }`
-      );
-    }
-  });
+  obj.recommendedFood = Math.trunc(obj.weight ** 0.75 * 28);
+
+  // obj.owners.forEach(function (own) {
+  //   //console.log(own);
+  //   if (own === 'Sarah') {
+  //     console.log(
+  //       `It's eating ${
+  //         obj.recommendedFood > obj.curFood ? 'too little' : 'too much'
+  //       }`
+  //     );
+  //   }
+  // });
 });
-let ownersEatTooMuch = [];
-let ownersEatTooLittle = [];
-dogs.map(obj =>
-  obj.curFood > obj.recommendedFood
-    ? ownersEatTooMuch.push(obj.owners)
-    : ownersEatTooLittle.push(obj.owners)
+
+//2.
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'little'
+  }`
 );
-console.log(ownersEatTooLittle.flat());
-console.log(`${ownersEatTooMuch.flat()}'s dogs eat too much`);
-console.log(`${ownersEatTooLittle.flat()}'s dogs eat too little`);
-console.log(dogs);
+
+//3.
+// let ownersEatTooMuch = [];
+// let ownersEatTooLittle = [];
+// dogs.map(obj =>
+//   obj.curFood > obj.recommendedFood
+//     ? ownersEatTooMuch.push(obj.owners)
+//     : ownersEatTooLittle.push(obj.owners)
+// );
+
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.recommendedFood > dog.curFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+
+//4.
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little`);
