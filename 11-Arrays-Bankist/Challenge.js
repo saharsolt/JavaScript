@@ -219,5 +219,8 @@ console.log(dogs.some(checkEatingOkay)); //true
 console.log(dogs.filter(checkEatingOkay));
 
 //8.
-const newDogs = dogs;
-console.log(newDogs);
+const newDogs = [...dogs];
+const dogSorted = newDogs.sort((a, b) => a.recommendedFood - b.recommendedFood);
+//const dogSorted = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogSorted);
+console.log(dogs);
