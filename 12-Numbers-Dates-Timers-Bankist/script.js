@@ -287,3 +287,19 @@ console.log(Number.isNaN(20 / 0)); //false
 console.log(Number.isInteger(20)); //true
 console.log(Number.isInteger(20.0)); //true
 console.log(Number.isInteger(20 / 0)); //false
+
+console.log(Math.sqrt(25)); //5
+console.log(25 ** (1 / 2)); //5
+console.log(8 ** (1 / 3)); //2
+
+console.log(Math.max(5, 18, 23, 10, 6)); //23
+console.log(Math.max(5, 18, '23', 10, 6)); //23
+console.log(Math.max(5, 18, '23px', 10, 6)); //NaN
+
+console.log(Math.min(2, 18, 23, 10, 6)); //2
+console.log(Math.PI * Number.parseFloat('9px') ** 2); //254.46900494077323
+console.log(Math.trunc(Math.random() * 6) + 1); //[1,6]
+
+const randomInt = (min, max) =>
+  Math.trunc(Math.random() * (max - min)) + 1 + min;
+//0....1 => 0....(max-min) => min....(max-min+min) => min...max
