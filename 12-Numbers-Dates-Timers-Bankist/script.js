@@ -251,3 +251,39 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+console.log(23 === 23.0); //true
+
+//Base 10 - 0 to 9 => 0.1 = 1/10 or 3/10 = 0.3333333
+//Binary base 2 - 0 1
+console.log(0.1 + 0.2); //0.30000000000000004
+console.log(0.1 + 0.2 === 0.3); //false
+
+//Conversion
+console.log(Number('23')); //23
+console.log(+'23'); //23
+
+//Parsing
+console.log(Number.parseInt('30px')); //30
+console.log(Number.parseInt('e23')); //NaN
+console.log(Number.parseInt('30.5rem')); //30
+console.log(Number.parseFloat('30.5rem')); //30.5
+
+console.log(Number.parseFloat('  30.5rem   ')); //30.5
+
+//Check if a value is not a number
+console.log(Number.isNaN(20)); //false
+console.log(Number.isNaN('20')); //false
+console.log(Number.isNaN(+'20x')); //true
+console.log(Number.isNaN(20 / 0)); //false
+
+//Checking if a value is number
+console.log(Number.isFinite(20)); //true
+console.log(Number.isFinite(20)); //true
+console.log(Number.isFinite(+'20x')); //false
+console.log(Number.isNaN(20 / 0)); //false
+
+//
+console.log(Number.isInteger(20)); //true
+console.log(Number.isInteger(20.0)); //true
+console.log(Number.isInteger(20 / 0)); //false
