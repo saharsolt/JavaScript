@@ -353,3 +353,22 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+
+//Numeric separators 287,456,231,000
+const diameter = 287_456_231_000;
+console.log(diameter);
+
+const priceCent = 203_90;
+console.log(priceCent);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.14_15;
+//const PI = 3._14_15;//It is not valid
+console.log(PI); //3.1415
+
+console.log(Number('23456')); //23456
+console.log(Number('234_56')); //NaN
+
+console.log(parseInt('234_56')); //234
