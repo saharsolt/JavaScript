@@ -407,3 +407,34 @@ console.log(huge + ' is really big!');
 console.log(10n / 3n); //3n
 console.log(10 / 3); //3.33
 console.log(12n / 3n); //4n
+
+//Create a date
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Fri Jul 29 2022'));
+console.log(new Date('December 24,2015'));
+console.log(new Date(account2.movementsDates[0]));
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+
+console.log(new Date(2037, 10, 31)); //Dec 01 //month is zero-based and Nov is 30 days
+console.log(new Date(0)); //1970 first Jan
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); //4th Jan
+
+//Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future.getFullYear()); //2037
+console.log(future.getMonth()); //10
+console.log(future.getDate()); //19
+console.log(future.getDay()); //4
+console.log(future.getHours()); //15
+console.log(future.getMinutes()); //23
+console.log(future.getSeconds()); //0
+console.log(future.getTime()); //2142249780000
+console.log(new Date(2142249780000)); //Thu Nov 19 2037 15:23:00 GMT+0200 (Eastern European Standard Time)
+console.log(future.toISOString()); //2037-11-19T13:23:00.000Z
+
+console.log(Date.now());
+
+future.setFullYear(2024);
+console.log(future);
