@@ -372,3 +372,38 @@ console.log(Number('23456')); //23456
 console.log(Number('234_56')); //NaN
 
 console.log(parseInt('234_56')); //234
+
+//BIGINT
+console.log(2 ** 53 - 1); //9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4); //unsafe numbers
+
+console.log(7834976527564298409385948287n);
+console.log(7834976527564298409385948287); //7.834976527564298e+27
+console.log(BigInt(7834976)); //7834976n
+console.log(BigInt(7834976527564298409385948287)); //7834976527564297923758915584n
+
+//Operations on BigInt
+console.log(10000n + 20000n); //30000n
+console.log(7834976527564298409385948287n * 1000000n); //7834976527564298409385948287000000n
+
+const huge = 736876421n;
+const num = 23;
+//console.log(huge * num);//Cannot mix
+console.log(huge * BigInt(num)); //16948157683n
+//console.log(Math.sqrt(huge));//Cannot convert
+//Exceptions
+console.log(20n > 15); //true
+console.log(20n === 20); //false
+console.log(20n == 20); //true
+console.log(20n == '20'); //true
+
+console.log(huge + ' is really big!');
+
+//Devisions
+console.log(10n / 3n); //3n
+console.log(10 / 3); //3.33
+console.log(12n / 3n); //4n
