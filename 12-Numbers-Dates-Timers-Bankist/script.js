@@ -182,6 +182,23 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+//Experimenting API
+// const now = new Date();
+// const options = {
+//   hour: 'numeric',
+//   min: 'numeric',
+//   day: 'numeric',
+//   month: 'long',
+//   year: 'numeric',
+//   weekday: 'long',
+// };
+// const locale = navigator.language;
+// console.log(locale); //en-US
+// // labelDate.textContent = new Intl.DateTimeFormat('en-US').format(now);//As of 7/30/2022
+// // labelDate.textContent = new Intl.DateTimeFormat('en-GB', options).format(now); //As of 30/07/2022
+// labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
+// //labelDate.textContent = new Intl.DateTimeFormat('fa-IR', options).format(now); //As of ۱۴۰۱/۵/۸
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -200,14 +217,28 @@ btnLogin.addEventListener('click', function (e) {
 
     //Create current date and time
     const now = new Date();
-    // labelDate.textContent = now;
-    const year = now.getFullYear();
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const min = `${now.getMinutes()}`.padStart(2, 0);
+    const options = {
+      hour: 'numeric',
+      min: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      weekday: 'long',
+    };
+    const locale = navigator.language;
+    console.log(locale); //en-US
+    labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
+      now
+    );
 
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+    // labelDate.textContent = now;
+    // const year = now.getFullYear();
+    // const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    // const day = `${now.getDate()}`.padStart(2, 0);
+    // const hour = `${now.getHours()}`.padStart(2, 0);
+    // const min = `${now.getMinutes()}`.padStart(2, 0);
+
+    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
