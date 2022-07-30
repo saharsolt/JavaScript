@@ -548,3 +548,20 @@ const calcDaysPassed = (date1, date2) =>
   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
 const day1 = calcDaysPassed(new Date(2022, 7, 19), new Date(2022, 7, 29));
 console.log(day1); //10 days
+
+//International numbers
+const num1 = 8743767346.23;
+const options = {
+  style: 'currency', //could be percent,unit,currency
+  unit: 'mile-per-hour',
+  currency: 'EUR',
+  useGrouping: false,
+};
+
+console.log('US', new Intl.NumberFormat('en-US', options).format(num1)); //8,743,767,346.23
+console.log('Germany:', new Intl.NumberFormat('de-DE', options).format(num1)); // 8.743.767.346,23
+console.log('Iran', new Intl.NumberFormat('fa-IR', options).format(num1)); //Iran ۸٬۷۴۳٬۷۶۷٬۳۴۶٫۲۳
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language, options).format(num1)
+); //en-US 8,743,767,346.23
