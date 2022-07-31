@@ -581,3 +581,24 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language, options).format(num1)
 ); //en-US 8,743,767,346.23
+
+//Setting timeout
+setTimeout(() => console.log('Here is your pizza! 🍕'), 3000);
+console.log('waiting...');
+
+setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  'olive',
+  'garlic'
+);
+console.log('Waiting my dear customer...');
+
+const ingredients = ['olive', 'spinach', 'garlic'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+);
+console.log('Waiting my dear customer...');
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
