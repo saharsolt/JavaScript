@@ -72,3 +72,53 @@ document
     //message.remove();
     message.parentElement.removeChild(message);
   });
+
+//Style
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 10 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+//Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt); //Bankist logo
+console.log(logo.className);
+console.log(logo.src);
+
+logo.alt = 'Beautiful minimalist logo';
+
+//Non-standard
+console.log(logo.designer); //undefine
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.twitter-link');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+const link1 = document.querySelector('.nav__link--btn');
+console.log(link1.href); //http://127.0.0.1:8080/#
+console.log(link1.getAttribute('href')); //#
+
+//Data attributes
+console.log(logo.dataset.versionNumber);
+
+//Classes
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c');
+logo.classList.contains('c'); //not include
+
+//Don not use
+//logo.className='sahar';//because it changes the name of the classes which relates to this element
