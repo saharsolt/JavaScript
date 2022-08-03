@@ -122,3 +122,35 @@ logo.classList.contains('c'); //not include
 
 //Don not use
 //logo.className='sahar';//because it changes the name of the classes which relates to this element
+
+//Implementing smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to'); //Using classname
+const section1 = document.querySelector('#section--1'); //Using id
+
+btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault();
+  const s1coords = section1.getBoundingClientRect(); //DOM Rect
+  console.log(s1coords);
+  console.log(e.target.getBoundingClientRect());
+  console.log('current scroll(X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'hight/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+  //Scrolling
+  //1
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+  //2
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //  behavior: 'smooth',
+  // });
+  //3
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
