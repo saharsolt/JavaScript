@@ -1,12 +1,13 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to'); //Using classname
+const section1 = document.querySelector('#section--1'); //Using id
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -33,9 +34,61 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//Implementing smooth scrolling
+
+btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault();
+  const s1coords = section1.getBoundingClientRect(); //DOM Rect
+  console.log(s1coords);
+  console.log(e.target.getBoundingClientRect());
+  console.log('current scroll(X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'hight/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+  //Scrolling
+  //1
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+  //2
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //  behavior: 'smooth',
+  // });
+  //3
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+//////////////////////////////////////
+//Page navigation
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+//1. Add eventListener to common parrent element
+//2. Determine what element originated the event
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  //console.log(e.target); //Where it happens
+  //Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    //console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
 //////////////////////////////////////////
 //Selecting elements
-
+/*
 console.log(document.documentElement);
 console.log(document.body);
 console.log(document.head);
@@ -123,38 +176,6 @@ logo.classList.contains('c'); //not include
 //Don not use
 //logo.className='sahar';//because it changes the name of the classes which relates to this element
 
-//Implementing smooth scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to'); //Using classname
-const section1 = document.querySelector('#section--1'); //Using id
-
-btnScrollTo.addEventListener('click', function (e) {
-  e.preventDefault();
-  const s1coords = section1.getBoundingClientRect(); //DOM Rect
-  console.log(s1coords);
-  console.log(e.target.getBoundingClientRect());
-  console.log('current scroll(X/Y)', window.pageXOffset, window.pageYOffset);
-
-  console.log(
-    'hight/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-  //Scrolling
-  //1
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-  //2
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //  behavior: 'smooth',
-  // });
-  //3
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
-
 const h1 = document.querySelector('h1');
 // h1.addEventListener('mouseenter', function (e) {
 //   alert('addEventListener: Great! You are reading the heading :D');
@@ -206,3 +227,4 @@ document.querySelector('.nav').addEventListener(
   },
   true
 );
+*/
