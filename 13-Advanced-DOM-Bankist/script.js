@@ -6,6 +6,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to'); //Using classname
 const section1 = document.querySelector('#section--1'); //Using id
+const h1 = document.querySelector('h1');
 ///////////////////////////////////////
 // Modal window
 
@@ -228,3 +229,29 @@ document.querySelector('.nav').addEventListener(
   true
 );
 */
+
+//DOM Traversing
+//Going downwards: child
+console.log(h1.querySelectorAll('.highlight')); //Nodelist
+console.log(h1.childNodes); //NodeList(9) [text, comment, text, span.highlight, text, br, text, span.highlight, text]
+console.log(h1.children); //HTMLCollection(3) [span.highlight, br, span.highlight]
+
+//Going upwards: parents
+console.log(h1.parentElement);
+console.log(h1.parentNode);
+
+h1.closest('.header').style.background = 'var(--color-primary-darker)';
+h1.closest('h1').style.background = 'var(--gradient-secondary)';
+
+//Going sideways: siblings
+console.log(h1.previousElementSibling); //null: there is no child before this
+console.log(h1.nextElementSibling); //next child
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
