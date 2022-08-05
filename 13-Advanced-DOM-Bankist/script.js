@@ -87,6 +87,24 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+//Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContent = document.querySelectorAll('.operations__content');
+
+// tabs.forEach(t =>
+//   t.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     console.log('TAB');
+//   })
+// );
+tabContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+  clicked.classList.add('.operations__content--active');
+});
+
 //////////////////////////////////////////
 //Selecting elements
 /*
