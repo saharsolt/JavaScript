@@ -7,6 +7,10 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to'); //Using classname
 const section1 = document.querySelector('#section--1'); //Using id
 const h1 = document.querySelector('h1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContent = document.querySelectorAll('.operations__content');
+const nav = document.querySelector('.nav');
 ///////////////////////////////////////
 // Modal window
 
@@ -89,9 +93,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 //Tabbed component
-const tabs = document.querySelectorAll('.operations__tab');
-const tabContainer = document.querySelector('.operations__tab-container');
-const tabContent = document.querySelectorAll('.operations__content');
 
 // tabs.forEach(t =>
 //   t.addEventListener('click', function (e) {
@@ -119,7 +120,33 @@ tabContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+//Menu fade animation
+nav.addEventListener('mouseover', function (e) {
+  //console.log(e.target);
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
 
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = 0.5;
+    });
+  }
+  logo.style.opacity = 0.5;
+});
+
+nav.addEventListener('mouseout', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = 1;
+    });
+  }
+  logo.style.opacity = 1;
+});
 //////////////////////////////////////////
 //Selecting elements
 /*
@@ -273,8 +300,8 @@ console.log(h1.children); //HTMLCollection(3) [span.highlight, br, span.highlig
 console.log(h1.parentElement);
 console.log(h1.parentNode);
 
-h1.closest('.header').style.background = 'var(--color-primary-darker)';
-h1.closest('h1').style.background = 'var(--gradient-secondary)';
+// h1.closest('.header').style.background = 'var(--color-primary-darker)';
+// h1.closest('h1').style.background = 'var(--gradient-secondary)';
 
 //Going sideways: siblings
 console.log(h1.previousElementSibling); //null: there is no child before this
@@ -285,6 +312,6 @@ console.log(h1.nextSibling);
 
 console.log(h1.parentElement.children);
 
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
-});
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = 'scale(0.5)';
+// });
