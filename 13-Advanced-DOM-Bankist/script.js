@@ -102,7 +102,22 @@ const tabContent = document.querySelectorAll('.operations__content');
 tabContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
   console.log(clicked);
-  clicked.classList.add('.operations__content--active');
+
+  //Gaurd clause
+  if (!clicked) return; //in order to stop the process of clicking near buttons
+
+  //Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  //Active tab
+  clicked.classList.add('operations__tab--active');
+
+  //Activate content area
+  console.log(clicked.dataset.tab);
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
 
 //////////////////////////////////////////
