@@ -121,32 +121,53 @@ tabContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 //Menu fade animation
-nav.addEventListener('mouseover', function (e) {
-  //console.log(e.target);
+const handleHover = function (e) {
+  console.log(this, e.currentTarget);
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
     siblings.forEach(el => {
-      if (el !== link) el.style.opacity = 0.5;
+      if (el !== link) el.style.opacity = this;
     });
   }
-  logo.style.opacity = 0.5;
-});
+  logo.style.opacity = this;
+};
+// nav.addEventListener('mouseover', handleHover);//it does not work
+// nav.addEventListener('mouseover', function (e) {
+//   handleHover(e, 0.5);
+// });
+//Passing "argument" into eventhandler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
 
-nav.addEventListener('mouseout', function (e) {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
+// nav.addEventListener('mouseover', function (e) {
+//   //console.log(e.target);
+//   if (e.target.classList.contains('nav__link')) {
+//     const link = e.target;
+//     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+//     const logo = link.closest('.nav').querySelector('img');
 
-    siblings.forEach(el => {
-      if (el !== link) el.style.opacity = 1;
-    });
-  }
-  logo.style.opacity = 1;
-});
+//     siblings.forEach(el => {
+//       if (el !== link) el.style.opacity = 0.5;
+//     });
+//   }
+//   logo.style.opacity = 0.5;
+// });
+
+// nav.addEventListener('mouseout', function (e) {
+//   if (e.target.classList.contains('nav__link')) {
+//     const link = e.target;
+//     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+//     const logo = link.closest('.nav').querySelector('img');
+
+//     siblings.forEach(el => {
+//       if (el !== link) el.style.opacity = 1;
+//     });
+//   }
+//   logo.style.opacity = 1;
+// });
 //////////////////////////////////////////
 //Selecting elements
 /*
