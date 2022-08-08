@@ -229,7 +229,7 @@ const obsOptions = {
 const sectionObserver = new IntersectionObserver(revealSection, obsOptions);
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  //section.classList.add('section--hidden');
 });
 
 //Lazy loading images
@@ -255,6 +255,32 @@ const imgObserver = new IntersectionObserver(loading, {
 });
 imgTargets.forEach(img => imgObserver.observe(img));
 
+//Slider
+const slides = document.querySelectorAll('.slide');
+const slider = document.querySelector('.slider');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+let curSlide = 0;
+
+const maxSlide = slides.length - 1;
+//slider.style.transform = 'scale(0.4) translateX(-800px)';
+slider.style.overflow = 'visible';
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+//0 100% 200% 300%
+//Next slide
+btnRight.addEventListener('click', function () {
+  if (curSlide === maxSlide) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+  );
+  //curSlide= 1: -100% 0% 100% 200%
+});
 //////////////////////////////////////////
 //Selecting elements
 /*
