@@ -12,6 +12,10 @@ const tabContainer = document.querySelector('.operations__tab-container');
 const tabContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
+const slides = document.querySelectorAll('.slide');
+//const slider = document.querySelector('.slider');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
 ///////////////////////////////////////
 // Modal window
 
@@ -256,31 +260,44 @@ const imgObserver = new IntersectionObserver(loading, {
 imgTargets.forEach(img => imgObserver.observe(img));
 
 //Slider
-const slides = document.querySelectorAll('.slide');
-const slider = document.querySelector('.slider');
-const btnLeft = document.querySelector('.slider__btn--left');
-const btnRight = document.querySelector('.slider__btn--right');
+
 let curSlide = 0;
 
 const maxSlide = slides.length - 1;
 //slider.style.transform = 'scale(0.4) translateX(-800px)';
-slider.style.overflow = 'visible';
+//slider.style.overflow = 'visible';
 
-slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+// slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //0 100% 200% 300%
+
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+};
+goToSlide(0); //0 100% 200% 300%
 //Next slide
-btnRight.addEventListener('click', function () {
+const nextSlide = function () {
   if (curSlide === maxSlide) {
     curSlide = 0;
   } else {
     curSlide++;
   }
+  goToSlide(curSlide);
+};
+//Prev slide
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  } else {
+    curSlide--;
+  }
+  goToSlide(curSlide);
+};
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
+//curSlide= 1: -100% 0% 100% 200%
 
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
-  );
-  //curSlide= 1: -100% 0% 100% 200%
-});
 //////////////////////////////////////////
 //Selecting elements
 /*
