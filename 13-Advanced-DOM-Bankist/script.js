@@ -260,7 +260,7 @@ const imgObserver = new IntersectionObserver(loading, {
 imgTargets.forEach(img => imgObserver.observe(img));
 
 //Slider
-
+const dotsContainer = document.querySelector('.dots');
 let curSlide = 0;
 
 const maxSlide = slides.length - 1;
@@ -269,6 +269,17 @@ const maxSlide = slides.length - 1;
 
 // slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //0 100% 200% 300%
+
+const createDots = function () {
+  slides.forEach(function (_, i) {
+    dotsContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide= '${i}'></button>`
+    );
+  });
+};
+
+createDots();
 
 const goToSlide = function (slide) {
   slides.forEach(
@@ -298,6 +309,20 @@ btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', prevSlide);
 //curSlide= 1: -100% 0% 100% 200%
 
+//slides with pressing keyboard
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+  if (e.key === 'ArrowLeft') prevSlide();
+  e.key === 'ArrowRight' && nextSlide();
+});
+
+dotsContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    //console.log('Dots');
+    const { slide } = e.target.dataset;
+    goToSlide(slide);
+  }
+});
 //////////////////////////////////////////
 //Selecting elements
 /*
