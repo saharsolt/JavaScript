@@ -16,6 +16,7 @@ const slides = document.querySelectorAll('.slide');
 //const slider = document.querySelector('.slider');
 const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
+const dotsContainer = document.querySelector('.dots');
 ///////////////////////////////////////
 // Modal window
 
@@ -260,7 +261,7 @@ const imgObserver = new IntersectionObserver(loading, {
 imgTargets.forEach(img => imgObserver.observe(img));
 
 //Slider
-const dotsContainer = document.querySelector('.dots');
+
 let curSlide = 0;
 
 const maxSlide = slides.length - 1;
@@ -270,6 +271,7 @@ const maxSlide = slides.length - 1;
 // slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
 //0 100% 200% 300%
 
+//Functions
 const createDots = function () {
   slides.forEach(function (_, i) {
     dotsContainer.insertAdjacentHTML(
@@ -338,6 +340,11 @@ dotsContainer.addEventListener('click', function (e) {
     activeDots(slide);
   }
 });
+const init = function () {
+  goToSlide(0);
+  createDots();
+  activeDots(0);
+};
 //////////////////////////////////////////
 //Selecting elements
 /*
