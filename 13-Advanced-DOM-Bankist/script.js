@@ -281,6 +281,17 @@ const createDots = function () {
 
 createDots();
 
+const activeDots = function (slide) {
+  document
+    .querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+
+activeDots(0);
 const goToSlide = function (slide) {
   slides.forEach(
     (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
@@ -295,6 +306,7 @@ const nextSlide = function () {
     curSlide++;
   }
   goToSlide(curSlide);
+  activeDots(curSlide);
 };
 //Prev slide
 const prevSlide = function () {
@@ -304,23 +316,26 @@ const prevSlide = function () {
     curSlide--;
   }
   goToSlide(curSlide);
+  activeDots(curSlide);
 };
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', prevSlide);
 //curSlide= 1: -100% 0% 100% 200%
 
-//slides with pressing keyboard
+//Keydown on slider
 document.addEventListener('keydown', function (e) {
   console.log(e);
   if (e.key === 'ArrowLeft') prevSlide();
   e.key === 'ArrowRight' && nextSlide();
 });
-
+//Dots on slider
 dotsContainer.addEventListener('click', function (e) {
   if (e.target.classList.contains('dots__dot')) {
     //console.log('Dots');
+    //const slide = e.target.dataset.slide;
     const { slide } = e.target.dataset;
     goToSlide(slide);
+    activeDots(slide);
   }
 });
 //////////////////////////////////////////
