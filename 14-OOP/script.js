@@ -43,3 +43,26 @@ console.log(jonas.species, sahar.species);
 
 console.log(jonas.hasOwnProperty('firstName')); //true
 console.log(jonas.hasOwnProperty('species')); //false
+
+console.log(jonas.__proto__);
+//Object.prototype (top of the prototype chain)
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__); //null
+
+console.log(Person.prototype.constructor); //return the function itself
+console.dir(Person.prototype.constructor); //Inspect the function
+
+const arr = [3, 5, 6, 7, 1, 8, 3, 5]; //new Array ===[]
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype); //true
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__.__proto__.__proto__);
+
+//It is good not to use it in practice
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique()); //[3, 5, 6, 7, 1, 8]
+
+const h1 = document.querySelector('h1'); //HTMLHeadingElement prototype
+console.dir(x => x + 1); //Function prototype
