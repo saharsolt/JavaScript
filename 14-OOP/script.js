@@ -22,6 +22,14 @@ console.log(sahar);
 
 console.log(jonas instanceof Person); //true
 
+Person.hey = function () {
+  console.log('Hey there 👋');
+  console.log(this);
+};
+
+Person.hey();
+//jessica.hey();// wrong because static method is not in the prototype of instances
+
 //ProtoTypes
 console.log(Person.prototype);
 Person.prototype.calcAge = function () {
@@ -76,6 +84,7 @@ class PersonCl {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
+  //Instance method
   //Methods will be added to .prototype property
   calcAge() {
     console.log(2022 - this.birthYear);
@@ -93,6 +102,11 @@ class PersonCl {
   }
   get fullName() {
     return this._fullName;
+  }
+  //Static method
+  static hey() {
+    console.log('Hey there 👋');
+    console.log(this);
   }
 }
 
@@ -114,6 +128,8 @@ jessica.greet();
 
 const walter = new PersonCl('Walter', 1989); //It doesn't have fullName
 const walter1 = new PersonCl('Walter White', 1980);
+
+PersonCl.hey();
 
 //getter and setter
 const account = {
