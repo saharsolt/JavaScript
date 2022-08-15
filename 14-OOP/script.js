@@ -147,3 +147,26 @@ const account = {
 console.log(account.latest);
 account.latest = 50;
 console.log(account.movements);
+
+//Object.create
+
+const PersonProto = {
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = 'Steven Nikolson';
+steven.birthYear = 1990;
+steven.calcAge(); //32
+
+console.log(steven.__proto__ === PersonProto); //true
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1978);
+sarah.calcAge();
