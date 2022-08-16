@@ -170,3 +170,41 @@ console.log(steven.__proto__ === PersonProto); //true
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1978);
 sarah.calcAge();
+
+//Inheritance between classes
+const Person1 = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person1.prototype.calcAge = function () {
+  console.log(2022 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  // this.firstName = firstName;
+  // this.birthYear = birthYear;
+  Person1.call(this, firstName, birthYear);
+  this.course = course;
+};
+//Linking prototypes
+Student.prototype = Object.create(Person1.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2000, 'Computer Science');
+console.log(mike);
+
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student); //true
+console.log(mike instanceof Person1); //true
+console.log(mike instanceof Object); //true
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor); //Person1{}
