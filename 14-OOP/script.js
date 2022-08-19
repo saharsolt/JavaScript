@@ -252,44 +252,73 @@ joy.introduce();
 joy.calcAge();
 
 //Another class example
+//1. Public fields
+//2. Private fields
+//3. Public methods
+//4. Private methods
+//(There is also a static method)
 class Account {
+  //Public fields(instances)
+  locale = navigator.language;
+
+  //Private fields(instances)
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     //Protected property
-    this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this.#movements = [];
+    // this.locale = navigator.language;
     console.log(`Thanks for opening an account, ${this.owner}`);
   }
+
+  //Public methods
   //Public interface
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposite(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
   withdraw(val) {
     this.deposite(-val);
   }
-  _approveLoan(val) {
-    return true;
-  }
+  // _approveLoan(val) {
+  //   return true;
+  // }
   requestLoan(val) {
+    // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposite(val);
       console.log('Loan approved!');
     }
   }
+  static helper() {
+    console.log('helper');
+  }
+  //Private methods
+  // #approveLoan(val) {
+  _approveLoan(val) {
+    return true;
+  }
 }
 
 const acc1 = new Account('Jonas', 'EUR', 1111);
-// acc1._movements.push(250);//Not accessible from outside of class
-// acc1._movements.push(-140);
+
+// acc1.#movements.push(250);//Not accessible from outside of class
+// acc1.#movements.push(-140);
+// acc1._approveLoan(1000);
+
 acc1.deposite(250);
 acc1.withdraw(140);
 acc1.requestLoan(1000);
-acc1.approveLoan(1000);
 console.log(acc1.getMovements());
 console.log(acc1);
+//console.log(acc1.#movements);//Error
+//console.log(acc1.#pin); //Error
+//console.log(acc1.#approveLoan(1000)); //Error
+Account.helper();
