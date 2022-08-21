@@ -283,9 +283,11 @@ class Account {
 
   deposite(val) {
     this.#movements.push(val);
+    return this;
   }
   withdraw(val) {
     this.deposite(-val);
+    return this;
   }
   // _approveLoan(val) {
   //   return true;
@@ -295,6 +297,7 @@ class Account {
     if (this._approveLoan(val)) {
       this.deposite(val);
       console.log('Loan approved!');
+      return this;
     }
   }
   static helper() {
@@ -318,7 +321,11 @@ acc1.withdraw(140);
 acc1.requestLoan(1000);
 console.log(acc1.getMovements());
 console.log(acc1);
+Account.helper();
+
 //console.log(acc1.#movements);//Error
 //console.log(acc1.#pin); //Error
 //console.log(acc1.#approveLoan(1000)); //Error
-Account.helper();
+
+acc1.deposite(300).deposite(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
