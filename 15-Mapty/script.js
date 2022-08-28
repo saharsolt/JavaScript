@@ -172,15 +172,43 @@ class App {
   }
 
   _newWorkout(e) {
-    //Clear input fields
-    inputDistance.value =
-      inputDuration.value =
-      inputCadence.value =
-      inputElevation.value =
-        '';
-
     e.preventDefault();
     //console.log(this.#mapEvent);
+
+    //Create new workout
+    const validInputs = (...inputs) =>
+      inputs.every(inp => Number.isFinite(inp));
+
+    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
+    // Get data from the form
+    const type = inputType.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
+
+    // If workout is running, create running obj
+    if (type === 'running') {
+      const cadence = +inputCadence.value;
+      // Check if data is valid
+      if (
+        // !Number.isFinite(distance) ||
+        // !Number.isFinite(duration) ||
+        // !Number.isFinite(cadence)
+        !validInputs(distance, duration, cadence) ||
+        !allPositive(distance, duration, cadence)
+      )
+        return alert('The input must be a positive number!');
+    }
+    // If workout is Cycling, create cycling obj
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+      if (
+        !validInputs(distance, duration, elevation) ||
+        !allPositive(distance, duration)
+      )
+        return alert('The input must be a positive number!');
+    }
+    // Add new obj to workout array
+    // Render workout on map
     const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
@@ -195,6 +223,15 @@ class App {
       )
       .setPopupContent('Workout!')
       .openPopup();
+    // Render workout on list
+    // Hide the form and clear input fields
+
+    //Clear input fields
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
   }
 }
 
