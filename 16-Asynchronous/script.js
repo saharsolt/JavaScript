@@ -293,7 +293,7 @@ const getPosition = function () {
   });
 };
 
-getPosition().then(pos => console.log(pos));
+// getPosition().then(pos => console.log(pos));
 
 const whereAmI2 = function () {
   getPosition()
@@ -329,3 +329,34 @@ const whereAmI2 = function () {
 };
 
 btn.addEventListener('click', whereAmI2);
+
+//Consuming promise with async and await
+
+// fetch(`https://restcountries.com/v3.1/name/${country}`).then(res =>
+//   console.log(res)
+// );
+
+const whereAmI3 = async function () {
+  //Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  //Reverse Geocoding
+  const resGeo = await fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=265340248874529326221x46774`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  //Country data
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${dataGeo.country}`
+  );
+  //console.log(res);
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+
+whereAmI3();
+console.log('First');
