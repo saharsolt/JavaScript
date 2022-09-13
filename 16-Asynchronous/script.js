@@ -1,34 +1,34 @@
 // 'use strict';
 
-//const btn = document.querySelector('.btn-country');
-// const countriesContainer = document.querySelector('.countries');
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
 
-// const renderError = function (msg) {
-//   countriesContainer.insertAdjacentText('beforeend', msg);
-//   // countriesContainer.style.opacity = 1;
-// };
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
 
-// const renderCountry = function (data, className = '') {
-//   const html = `<article class="country ${className}">
-//     <img class="country__img" src="${data.flags.png}" />
-//     <div class="country__data">
-//       <h3 class="country__name">${data.name.common}</h3>
-//       <h4 class="country__region">${data.region}</h4>
-//       <p class="country__row"><span>👫</span>${(
-//         +data.population / 1000000
-//       ).toFixed(1)} people</p>
-//       <p class="country__row"><span>🗣️</span>${
-//         Object.entries(data.languages)[0][1]
-//       }</p>
-//       <p class="country__row"><span>💰</span>${
-//         Object.entries(data.currencies)[0][1]['name']
-//       }</p>
-//     </div>
-//   </article>`;
+const renderCountry = function (data, className = '') {
+  const html = `<article class="country ${className}">
+    <img class="country__img" src="${data.flags.png}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name.common}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)} people</p>
+      <p class="country__row"><span>🗣️</span>${
+        Object.entries(data.languages)[0][1]
+      }</p>
+      <p class="country__row"><span>💰</span>${
+        Object.entries(data.currencies)[0][1]['name']
+      }</p>
+    </div>
+  </article>`;
 
-//   countriesContainer.insertAdjacentHTML('beforeend', html);
-//   // countriesContainer.style.opacity = 1;
-// };
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  // countriesContainer.style.opacity = 1;
+};
 // ///////////////////////////////////////
 // // const getCountryData = function (country) {
 // //   const request = new XMLHttpRequest();
@@ -283,15 +283,15 @@
 // );
 // // console.log('First happened');
 
-// const getPosition = function () {
-//   return new Promise(function (resolve, rejcet) {
-//     // navigator.geolocation.getCurrentPosition(
-//     //   possiton => resolve(possiton),
-//     //   err => rejcet(err)
-//     // );
-//     navigator.geolocation.getCurrentPosition(resolve, rejcet);
-//   });
-// };
+const getPosition = function () {
+  return new Promise(function (resolve, rejcet) {
+    // navigator.geolocation.getCurrentPosition(
+    //   possiton => resolve(possiton),
+    //   err => rejcet(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, rejcet);
+  });
+};
 
 // // getPosition().then(pos => console.log(pos));
 
@@ -332,31 +332,48 @@
 
 // //Consuming promise with async and await
 
-// // fetch(`https://restcountries.com/v3.1/name/${country}`).then(res =>
-// //   console.log(res)
-// // );
+// fetch(`https://restcountries.com/v3.1/name/${country}`).then(res =>
+//   console.log(res)
+// );
 
-// const whereAmI3 = async function () {
-//   //Geolocation
-//   const pos = await getPosition();
-//   const { latitude: lat, longitude: lng } = pos.coords;
+const whereAmI3 = async function () {
+  try {
+    //Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-//   //Reverse Geocoding
-//   const resGeo = await fetch(
-//     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=265340248874529326221x46774`
-//   );
-//   const dataGeo = await resGeo.json();
-//   console.log(dataGeo);
+    //Reverse Geocoding
+    const resGeo = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=265340248874529326221x46774`
+    );
+    if (!resGeo) throw new Error(`Problem geting location data`);
+    const dataGeo = await resGeo.json();
+    console.log(dataGeo);
 
-//   //Country data
-//   const res = await fetch(
-//     `https://restcountries.com/v3.1/name/${dataGeo.country}`
-//   );
-//   //console.log(res);
-//   const data = await res.json();
-//   console.log(data);
-//   renderCountry(data[0]);
-// };
+    //Country data
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${dataGeo.country}`
+    );
+    if (!res) throw new Error(`Problem geting country`);
+    //console.log(res);
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(`${err} 💥`);
+    renderError(`Something is wrong 💥💥 ${err.message}`);
+  }
+};
+whereAmI3();
+whereAmI3();
+whereAmI3();
+whereAmI3();
+console.log('First');
 
-// whereAmI3();
-// console.log('First');
+// try {
+//   let y = 1;
+//   const x = 3;
+//   x = 1;
+// } catch (err) {
+//   alert(err.message);
+// }
