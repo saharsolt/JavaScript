@@ -85,3 +85,15 @@ shoppingCard2.addToCart('Pizza', 5);
 shoppingCard2.addToCart('bread', 2);
 console.log(shoppingCard2);
 console.log(shoppingCard2.shoppingCost);
+
+//Common JS module
+//Export
+export.addToCart1 = function (product, quality) {
+    cart.push({ product, quality });
+    console.log(
+      `${quality} ${product} added to cart(Shipping cost is ${shoppingCost})!`
+    );
+  };
+
+//Import
+const { addToCart } = require('./shoppingCard.js');
