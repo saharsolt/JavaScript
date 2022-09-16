@@ -53,3 +53,35 @@ lastPost.then(last => console.log(last));
 //Better way
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
+
+//Module pattern
+const shoppingCard2 = (function () {
+  const cart = [];
+  const shoppingCost = 10;
+  const totalPrice = 237;
+  const totalQuantity = 23;
+
+  const addToCart = function (product, quality) {
+    cart.push({ product, quality });
+    console.log(
+      `${quality} ${product} added to cart(Shipping cost is ${shoppingCost})!`
+    );
+  };
+
+  const orderStock = function (product, quality) {
+    cart.push({ product, quality });
+    console.log(`${quality} ${product} Ordered from supplier!`);
+  };
+
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
+
+shoppingCard2.addToCart('Pizza', 5);
+shoppingCard2.addToCart('bread', 2);
+console.log(shoppingCard2);
+console.log(shoppingCard2.shoppingCost);
