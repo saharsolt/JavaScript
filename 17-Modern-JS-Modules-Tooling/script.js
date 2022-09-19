@@ -30,29 +30,29 @@ console.log(cart);
 
 //Top level await
 
-console.log('Start to fetch');
-const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-console.log(res);
-const data = await res.json();
-console.log(data);
-console.log('Something');
+// console.log('Start to fetch');
+// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+// console.log(res);
+// const data = await res.json();
+// console.log(data);
+// console.log('Something');
 
-const getLastPost = async function () {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await res.json();
-  console.log(data);
-  return { title: data.at(-1).title, text: data.at(-1).body };
-};
+// const getLastPost = async function () {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+//   const data = await res.json();
+//   console.log(data);
+//   return { title: data.at(-1).title, text: data.at(-1).body };
+// };
 
-const lastPost = getLastPost();
-console.log(lastPost);
+// const lastPost = getLastPost();
+// console.log(lastPost);
 
-//No clean code
-lastPost.then(last => console.log(last));
+// //No clean code
+// lastPost.then(last => console.log(last));
 
 //Better way
-const lastPost2 = await getLastPost();
-console.log(lastPost2);
+// const lastPost2 = await getLastPost();
+// console.log(lastPost2);
 
 //Module pattern
 const shoppingCard2 = (function () {
@@ -99,7 +99,8 @@ console.log(shoppingCard2.shoppingCost);
 
 //const { addToCart } = require('./shoppingCard.js');
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -117,3 +118,8 @@ const stateDeepClone = cloneDeep(state);
 state.user.logggedIn = false;
 console.log(state);
 console.log(stateDeepClone);
+
+//Hot module replacement
+if (module.hot) {
+  module.hot.accept();
+}
