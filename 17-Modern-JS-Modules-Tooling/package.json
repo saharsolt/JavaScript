@@ -9,6 +9,7 @@
   "author": "Sahar",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^3.25.2",
     "leaflet": "^1.8.0",
     "lodash-es": "^4.17.21"
   },
