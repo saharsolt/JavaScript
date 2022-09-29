@@ -475,16 +475,13 @@ const timeout = function(s) {
 const renderSpinner = function(parentEl) {
     const markup = `<div class="spinner">\n    <svg>\n      <use href="${_iconsSvgDefault.default}#icon-loader"></use>\n    </svg>\n  </div>`;
     parentEl.innerHTML = "";
-    parentEl.insertAdjacentHTML("afterbegin", markup);
+    parentEl.insertAdjacentHTML("after begin", markup);
 };
 const showRecipe = async function() {
     try {
-        const id = window.location.hash.slice(1);
-        console.log(id);
-        if (!id) return;
         //1. Loading recipe
         renderSpinner(recipeContainer);
-        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
+        const res = await fetch("https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604691c37cdc054bd0bc");
         const data = await res.json();
         console.log(res, data);
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
@@ -510,13 +507,7 @@ const showRecipe = async function() {
         alert(err);
     }
 };
-// showRecipe();
-[
-    "hashchange",
-    "load"
-].forEach((ev)=>window.addEventListener(ev, showRecipe)
-); // window.addEventListener("hashchange", showRecipe);
- // window.addEventListener("load", showRecipe);
+showRecipe();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","url:../img/icons.svg":"iwCpK","core-js/stable":"eIyVg","regenerator-runtime/runtime":"cH8Iq"}],"JacNc":[function(require,module,exports) {
 exports.interopDefault = function(a) {
