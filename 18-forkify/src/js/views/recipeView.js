@@ -3,7 +3,7 @@ import icons from "url:../../img/icons.svg"; //parcel v2
 import { Fraction } from "fractional";
 
 class RecipeView {
-  #parrentElement = document.querySelector(".recipe");
+  #parentElement = document.querySelector(".recipe");
   #data;
   #errorMessage = "We could not find that recipe. Please use another one!";
   #message = "";
@@ -13,11 +13,11 @@ class RecipeView {
 
     const markup = this.#generateMarkup();
     this.#clear();
-    this.#parrentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   #clear() {
-    this.#parrentElement.innerHTML = "";
+    this.#parentElement.innerHTML = "";
   }
 
   renderSpinner() {
@@ -27,7 +27,7 @@ class RecipeView {
       </svg>
     </div>`;
     this.#clear();
-    this.#parrentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   renderError(message = this.#errorMessage) {
@@ -41,7 +41,7 @@ class RecipeView {
   </div> -->`;
 
     this.#clear();
-    this.#parrentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   renderMessage(message = this.#message) {
@@ -55,7 +55,7 @@ class RecipeView {
   </div> -->`;
 
     this.#clear();
-    this.#parrentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   addHandlerRender(handler) {
