@@ -49,7 +49,7 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     //3) Render
-    console.log(model.state.search.results);
+    //console.log(model.state.search.results);
     // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultPage());
 
@@ -79,8 +79,11 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
-  model.addBookmark(model.state.recipe);
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+
   console.log(model.state.recipe);
+
   recipeView.update(model.state.recipe);
 };
 // controlRecipes();
